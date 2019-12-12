@@ -1,0 +1,6 @@
+# Java-Training
+### Task 1 - LinearPrograms
+#### [•Exercise_1](https://github.com/Tsarionok/Java-Training/tree/master/Task_1_LinearPrograms/Exercise1)
+#### [•Exercise_11](https://github.com/Tsarionok/Java-Training/tree/master/Task_1_LinearPrograms/Exercise11)
+#### [•Exercise_29](https://github.com/Tsarionok/Java-Training/tree/master/Task_1_LinearPrograms/Exercise29)
+#### [•Exercise_39](https://github.com/Tsarionok/Java-Training/tree/master/Task_1_LinearPrograms/Exercise39)
