@@ -10,3 +10,4 @@
 
 #### [•Exercise_1](https://github.com/Tsarionok/Java-Training/tree/dev/Task_2_Branches/Exercise1/src/main/java/by/tsarionok)
 #### [•Exercise_11](https://github.com/Tsarionok/Java-Training/tree/dev/Task_2_Branches/Exercise11/src/main/java/by/tsarionok)
+#### [•Seasons](https://github.com/Tsarionok/Java-Training/tree/dev/Task_2_Branches/Seasons/src/main/java/by/tsarionok)
