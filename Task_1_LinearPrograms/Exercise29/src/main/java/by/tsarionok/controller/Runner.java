@@ -5,7 +5,7 @@ import by.tsarionok.service.TriangleAngles;
 
 public class Runner {
     public static void main(String[] args) {
-        TriangleAngles triangleAngles = new TriangleAngles(new Triangle(2, 4, 4));
+        TriangleAngles triangleAngles = new TriangleAngles(new Triangle(3, 4, 5));
 
         double[] angles = triangleAngles.convertToDegrees();
 
