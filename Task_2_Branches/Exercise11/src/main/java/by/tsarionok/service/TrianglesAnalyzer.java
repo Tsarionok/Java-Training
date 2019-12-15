@@ -9,13 +9,9 @@ public class TrianglesAnalyzer {
         if (triangle.getFirstSide() <= 0 && triangle.getSecondSide() <= 0 && triangle.getThirdSide() <= 0) {
             return false;
         }
-        if (triangle.getFirstSide() + triangle.getSecondSide() > triangle.getThirdSide() &&
+        return triangle.getFirstSide() + triangle.getSecondSide() > triangle.getThirdSide() &&
                 triangle.getSecondSide() + triangle.getThirdSide() > triangle.getFirstSide() &&
-                triangle.getFirstSide() + triangle.getThirdSide() > triangle.getSecondSide()) {
-            return true;
-        } else {
-            return false;
-        }
+                triangle.getFirstSide() + triangle.getThirdSide() > triangle.getSecondSide();
     }
 
     public double triangleSquare(Triangle triangle) throws TriangleException {
