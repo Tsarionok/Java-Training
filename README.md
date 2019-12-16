@@ -12,7 +12,6 @@
 #### [•Exercise_11](https://github.com/Tsarionok/Java-Training/tree/dev/Task_2_Branches/Exercise11/src/main/java/by/tsarionok)
 #### [•Exercise_30](https://github.com/Tsarionok/Java-Training/tree/dev/Task_2_Branches/Exercise30/src/main/java/by/tsarionok)
 #### [•Exercise_40](https://github.com/Tsarionok/Java-Training/tree/dev/Task_2_Branches/Exercise40/src/main/java/by/tsarionok)
-#### [•Exercise_30](https://github.com/Tsarionok/Java-Training/tree/dev/Task_2_Branches/Exercise30/src/main/java/by/tsarionok)
 #### [•Next_Date](https://github.com/Tsarionok/Java-Training/tree/dev/Task_2_Branches/NextDate/src/main/java/by/tsarionok)
 #### [•Seasons](https://github.com/Tsarionok/Java-Training/tree/dev/Task_2_Branches/Seasons/src/main/java/by/tsarionok)
 
