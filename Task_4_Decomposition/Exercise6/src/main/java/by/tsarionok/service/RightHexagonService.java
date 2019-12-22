@@ -29,4 +29,12 @@ public class RightHexagonService {
         // The equation for calculating the area of an equilateral triangle
         return (SQRT_3 / 4) * size * size;
     }
+
+    public RightHexagon getHexagon() {
+        return hexagon;
+    }
+
+    public void setHexagon(RightHexagon hexagon) {
+        this.hexagon = hexagon;
+    }
 }
