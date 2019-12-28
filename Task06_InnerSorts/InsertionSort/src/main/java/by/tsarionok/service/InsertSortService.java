@@ -1,15 +1,14 @@
 package by.tsarionok.service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class InsertSortService {
 
-    public void sort (ArrayList<Integer> arr) {
+    public void sort(ArrayList<Integer> arr) {
         int temp;
         int min = Integer.MAX_VALUE;
         int rightBorder = 0;
-        for (int i = 0; i < arr.size(); i++ ) {
+        for (int i = 0; i < arr.size(); i++) {
             for (int j = i; j < arr.size(); j++) {
                 if (min > arr.get(j)) {
                     min = arr.get(j);
@@ -25,13 +24,10 @@ public class InsertSortService {
         }
     }
 
-    public void swap (Integer a, Integer b) {
+    public void swap(Integer a, Integer b) {
         Integer temp = a;
         a = b;
         b = temp;
     }
-
-    // java classes
-    // 592 Blinov
 
 }
