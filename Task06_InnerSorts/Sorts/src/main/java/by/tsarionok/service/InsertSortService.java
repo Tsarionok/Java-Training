@@ -24,8 +24,8 @@ public class InsertSortService {
         }
     }
 
-    public void swap(Integer a, Integer b) {
-        Integer temp = a;
+    public void swap(int a, int b) {
+        int temp = a;
         a = b;
         b = temp;
     }
