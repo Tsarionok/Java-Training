@@ -3,10 +3,14 @@ package by.tsarionok.service.impl;
 import by.tsarionok.service.SortService;
 
 import java.util.List;
+import java.util.Objects;
 
 public class InsertSortServiceImpl<T extends Number> implements SortService {
 
     List<T> numbers;
+
+    public InsertSortServiceImpl() {
+    }
 
     public InsertSortServiceImpl(List<T> numbers) {
         this.numbers = numbers;
@@ -16,7 +20,7 @@ public class InsertSortServiceImpl<T extends Number> implements SortService {
      * sort ascending
      */
     @Override
-    public List<T> sort() {
+    public List sort() {
         int j;
         T number;
         /**
@@ -44,5 +48,31 @@ public class InsertSortServiceImpl<T extends Number> implements SortService {
     @Override
     public int compareTo(Object o) {
         return 0;
+    }
+
+    public List<T> getNumbers() {
+        return numbers;
+    }
+
+    public void setNumbers(List numbers) {
+        this.numbers = numbers;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        InsertSortServiceImpl<?> that = (InsertSortServiceImpl<?>) o;
+        return Objects.equals(numbers, that.numbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numbers);
+    }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
     }
 }

@@ -1,7 +1,6 @@
 package by.tsarionok.controller;
 
 import by.tsarionok.service.SortService;
-import by.tsarionok.service.impl.InsertSortServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +11,8 @@ public class Runner { // выбором, двусторонним выбором
 
         final int SIZE = 30;
 
+        MenuController menuController = new MenuController();
+
         Random random = new Random();
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < SIZE; i++) {
@@ -20,7 +21,8 @@ public class Runner { // выбором, двусторонним выбором
 
         System.out.println(numbers);
 
-        SortService<Integer> sortService = new InsertSortServiceImpl<>(numbers);
+        SortService<Integer> sortService = menuController.choiceSort();
+        sortService.setNumbers(numbers);
 
         System.out.println(sortService.sort());
 
