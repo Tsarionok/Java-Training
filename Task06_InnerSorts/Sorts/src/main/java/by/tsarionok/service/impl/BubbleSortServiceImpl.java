@@ -30,15 +30,15 @@ public class BubbleSortServiceImpl<T extends Number> implements SortService {
 
         int j;
 
-        for (int i = numbers.size() - 2; i >= 0; i--) {
+        for (int i = 0; i < numbers.size() - 1; i++) {
             j = i;
-            while (j >= 0) {
+            while (j < numbers.size() - 1 - i) {
                 if (numbers.get(j).doubleValue() > numbers.get(j + 1).doubleValue()) {
                     number = numbers.get(j);
                     numbers.set(j, numbers.get(j + 1));
                     numbers.set(j + 1, number);
                 }
-                j--;
+                j++;
             }
         }
 

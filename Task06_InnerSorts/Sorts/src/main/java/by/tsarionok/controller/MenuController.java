@@ -32,11 +32,10 @@ public class MenuController {
             case 2:
                 return new InsertSortServiceImpl();
             default:
+                assert false;
                 System.out.println("Incorrect input! Try again!");
-                showMenu();
+                choiceSort();
         }
         return null;
     }
-
-
 }
