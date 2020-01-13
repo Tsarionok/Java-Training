@@ -16,38 +16,32 @@ public class BubbleSortServiceImpl<T extends Number> implements SortService {
         this.numbers = numbers;
     }
 
+    @Override
+    public List sort() {
+        T number;
+
+        int i = numbers.size();
+
+        while (i >= 0) {
+            for (int j = 0; j < i - 1; j++) {
+                if (numbers.get(j).doubleValue() > numbers.get(j + 1).doubleValue()) {
+                    number = numbers.get(j);
+                    numbers.set(j, numbers.get(j + 1));
+                    numbers.set(j + 1, number);
+                }
+            }
+            i--;
+        }
+
+        return numbers;
+    }
+
     public List<T> getNumbers() {
         return numbers;
     }
 
     public void setNumbers(List numbers) {
         this.numbers = numbers;
-    }
-
-    @Override
-    public List sort() {
-        T number;
-
-        int j;
-
-        for (int i = 0; i < numbers.size() - 1; i++) {
-            j = i;
-            while (j < numbers.size() - 1 - i) {
-                if (numbers.get(j).doubleValue() > numbers.get(j + 1).doubleValue()) {
-                    number = numbers.get(j);
-                    numbers.set(j, numbers.get(j + 1));
-                    numbers.set(j + 1, number);
-                }
-                j++;
-            }
-        }
-
-        return numbers;
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        return 0;
     }
 
     @Override

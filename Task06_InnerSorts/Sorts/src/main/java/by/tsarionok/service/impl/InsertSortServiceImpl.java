@@ -45,11 +45,6 @@ public class InsertSortServiceImpl<T extends Number> implements SortService {
         return numbers;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
-
     public List<T> getNumbers() {
         return numbers;
     }
