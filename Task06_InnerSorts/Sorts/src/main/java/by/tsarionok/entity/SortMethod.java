@@ -1,6 +1,6 @@
 package by.tsarionok.entity;
 
-public enum Sort {
+public enum SortMethod {
     BUBBLE_SORT,
     INSERTION_SORT
 }
