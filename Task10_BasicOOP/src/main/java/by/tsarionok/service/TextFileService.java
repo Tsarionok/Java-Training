@@ -3,7 +3,7 @@ package by.tsarionok.service;
 public interface TextFileService {
     void create();
 
-    void rename();
+    void rename(String newName);
 
     String read();
 

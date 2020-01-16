@@ -3,7 +3,7 @@ package by.tsarionok.dao;
 public interface DaoFileManager {
     void create();
 
-    void rename();
+    void rename(String newName);
 
     String read();
 

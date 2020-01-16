@@ -15,8 +15,8 @@ public class TextFileController {
         fileService.create();
     }
 
-    void rename() {
-        fileService.rename();
+    void rename(String newName) {
+        fileService.rename(newName);
     }
 
     String read() {

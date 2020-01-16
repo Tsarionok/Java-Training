@@ -6,6 +6,7 @@ import by.tsarionok.exception.FileExistsException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
 import java.io.IOException;
 
 public class DaoFileManagerImpl implements DaoFileManager {
@@ -34,8 +35,8 @@ public class DaoFileManagerImpl implements DaoFileManager {
     }
 
     @Override
-    public void rename() {
-        System.out.println("rename");
+    public void rename(String newName) {
+        textFile.renameTo(new File(newName));
     }
 
     @Override

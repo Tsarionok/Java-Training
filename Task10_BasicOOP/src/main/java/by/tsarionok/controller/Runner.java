@@ -7,9 +7,9 @@ public class Runner {
     public static void main(String[] args) {
         TextFileController controller = new TextFileController(PATH);
 
-        controller.create();
+//        controller.create();
 //        controller.read();
-//        controller.rename();
+        controller.rename("data/kek.txt");
 //        controller.update();
 //        controller.delete();
     }

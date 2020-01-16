@@ -19,8 +19,8 @@ public class TextFileServiceImpl implements TextFileService {
     }
 
     @Override
-    public void rename() {
-        fileManager.rename();
+    public void rename(String newName) {
+        fileManager.rename(newName);
     }
 
     @Override
