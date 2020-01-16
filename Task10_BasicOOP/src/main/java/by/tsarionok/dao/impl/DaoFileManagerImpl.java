@@ -2,8 +2,14 @@ package by.tsarionok.dao.impl;
 
 import by.tsarionok.dao.DaoFileManager;
 import by.tsarionok.entity.TextFile;
+import by.tsarionok.exception.FileExistsException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
 
 public class DaoFileManagerImpl implements DaoFileManager {
+    private static final Logger LOGGER = LogManager.getLogger(DaoFileManagerImpl.class);
 
     TextFile textFile;
 
@@ -13,7 +19,18 @@ public class DaoFileManagerImpl implements DaoFileManager {
 
     @Override
     public void create() {
-        System.out.println("create");
+        try {
+            if (!textFile.exists()) {
+                textFile.createNewFile();
+            } else {
+                throw new FileExistsException();
+            }
+        } catch (IOException e) {
+            LOGGER.error("Incorrect path");
+        } catch (FileExistsException e) {
+            LOGGER.error("Creating error! This file is exists");
+        }
+
     }
 
     @Override
