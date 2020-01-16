@@ -3,7 +3,6 @@ package by.tsarionok.service.impl;
 import by.tsarionok.service.SortService;
 
 import java.util.List;
-import java.util.Objects;
 
 public class InsertSortServiceImpl<T extends Number> implements SortService {
 
@@ -53,21 +52,4 @@ public class InsertSortServiceImpl<T extends Number> implements SortService {
         this.numbers = numbers;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        InsertSortServiceImpl<?> that = (InsertSortServiceImpl<?>) o;
-        return Objects.equals(numbers, that.numbers);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(numbers);
-    }
-
-    @Override
-    public String toString() {
-        return numbers.toString();
-    }
 }

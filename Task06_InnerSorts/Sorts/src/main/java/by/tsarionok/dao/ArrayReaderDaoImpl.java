@@ -12,11 +12,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class ArrayDaoImpl implements ArrayDao {
+public class ArrayReaderDaoImpl implements ArrayReaderDao {
     /**
      * Logger, which used to log event.
      */
-    private final static Logger LOGGER = LogManager.getLogger(ArrayDaoImpl.class);
+    private final static Logger LOGGER = LogManager.getLogger(ArrayReaderDaoImpl.class);
 
     private Path path;
 
@@ -25,7 +25,7 @@ public class ArrayDaoImpl implements ArrayDao {
      */
     private List<String> strData;
 
-    public ArrayDaoImpl(final String pathName) throws FileNotFoundException {
+    public ArrayReaderDaoImpl(final String pathName) throws FileNotFoundException {
         if (pathName != null) {
             path = Paths.get(pathName);
         } else {
@@ -51,8 +51,4 @@ public class ArrayDaoImpl implements ArrayDao {
         return strData;
     }
 
-    @Override
-    public void writeStringFile(List<String> numbers) throws IOException {
-
-    }
 }

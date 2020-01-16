@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class MenuController {
 
 
-    // Single responsibility is broken!!!
     public void showMenu() {
 
         System.out.println("Choose how to sort:");
@@ -32,7 +31,6 @@ public class MenuController {
             case 2:
                 return new InsertSortServiceImpl();
             default:
-                assert false;
                 System.out.println("Incorrect input! Try again!");
                 choiceSort();
         }

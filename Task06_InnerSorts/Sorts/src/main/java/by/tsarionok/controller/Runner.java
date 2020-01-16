@@ -2,26 +2,19 @@ package by.tsarionok.controller;
 
 import by.tsarionok.service.SortService;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Runner { // выбором, двусторонним выбором, пузырьком, шейкерная
     public static void main(String[] args) {
-
-        final int SIZE = 30;
+        List<Double> numbers;
+        ReadFileController readFileController = new ReadFileController();
+        numbers = readFileController.readFile("data/array.txt");
 
         MenuController menuController = new MenuController();
 
-        Random random = new Random();
-        List<Integer> numbers = new ArrayList<>();
-        for (int i = 0; i < SIZE; i++) {
-            numbers.add(random.nextInt() % 15 + 15);
-        }
-
         System.out.println(numbers);
 
-        SortService<Integer> sortService = menuController.choiceSort();
+        SortService<Double> sortService = menuController.choiceSort();
         sortService.setNumbers(numbers);
 
         System.out.println(sortService.sort());
