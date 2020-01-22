@@ -12,7 +12,7 @@ public class Runner {
 
         calendarService.addAllDefaultWeekend();
 
-        System.out.printf("Колличество выходных дней (Сб и Вс) в %d году равно %d\n",
+        System.out.printf("Amount of holidays in %d year is %d\n",
                 calendar.getYear(), calendarService.numberOfHolidaysInYear());
 
         calendarService.addHoliday("Новый Год", 1, 1);

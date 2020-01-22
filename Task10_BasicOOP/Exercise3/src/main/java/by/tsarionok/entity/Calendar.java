@@ -66,7 +66,7 @@ public class Calendar {
 
     @Override
     public String toString() {
-        return "Calendar [holidays=" + Arrays.toString(holidays) + ", year=" + year + "]";
+        return "holidays: " + Arrays.toString(holidays) + " of the " + year + " year";
     }
 
     public class Holiday {
