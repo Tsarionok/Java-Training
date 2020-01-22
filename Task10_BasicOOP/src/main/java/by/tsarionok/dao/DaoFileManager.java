@@ -7,7 +7,7 @@ public interface DaoFileManager {
 
     String read();
 
-    void update();
+    void update(byte[] data);
 
     void delete();
 }

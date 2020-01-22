@@ -10,9 +10,9 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 public class DaoFileManagerImpl implements DaoFileManager {
     private static final Logger LOGGER = LogManager.getLogger(DaoFileManagerImpl.class);
@@ -46,13 +46,13 @@ public class DaoFileManagerImpl implements DaoFileManager {
 
     @Override
     public String read() {
-
         StringBuilder data = new StringBuilder();
         try {
-            Files.lines(Paths.get(textFile.getPath()), StandardCharsets.UTF_8).forEach(s -> {
-                data.append(s);
-                data.append("\n");
-            });
+            Files.lines(Paths.get(textFile.getPath())).forEach(
+                    s -> {
+                        data.append(s);
+                        data.append("\n");
+                    });
             if (data.toString().isEmpty()) {
                 throw new FileIsEmptyException("File is empty");
             }
@@ -67,12 +67,16 @@ public class DaoFileManagerImpl implements DaoFileManager {
     }
 
     @Override
-    public void update() {
-        System.out.println("update");
+    public void update(byte[] data) {
+        try {
+            Files.write(textFile.toPath(), data, StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            LOGGER.error("File doesn't exist", e);
+        }
     }
 
     @Override
     public void delete() {
-        System.out.println("delete");
+        textFile.delete();
     }
 }

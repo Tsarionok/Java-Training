@@ -7,7 +7,7 @@ public interface TextFileService {
 
     String read();
 
-    void update();
+    void update(String strData);
 
     void delete();
 }

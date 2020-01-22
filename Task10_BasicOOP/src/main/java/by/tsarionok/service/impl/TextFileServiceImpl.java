@@ -29,8 +29,8 @@ public class TextFileServiceImpl implements TextFileService {
     }
 
     @Override
-    public void update() {
-        fileManager.update();
+    public void update(String strData) {
+        fileManager.update(strData.getBytes());
     }
 
     @Override

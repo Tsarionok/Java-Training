@@ -5,11 +5,7 @@ public class Runner {
     private static String PATH = "data/textData.txt";
 
     public static void main(String[] args) {
-        TextFileController controller = new TextFileController(PATH);
-//        controller.create();
-        System.out.println(controller.read());
-//        controller.rename("data/kek.txt");
-//        controller.update();
-//        controller.delete();
+        ChooseController chooseController = new ChooseController();
+        chooseController.fileAction(PATH);
     }
 }

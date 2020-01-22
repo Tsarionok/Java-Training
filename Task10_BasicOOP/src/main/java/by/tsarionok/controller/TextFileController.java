@@ -3,6 +3,8 @@ package by.tsarionok.controller;
 import by.tsarionok.service.TextFileService;
 import by.tsarionok.service.impl.TextFileServiceImpl;
 
+import java.util.Scanner;
+
 public class TextFileController {
 
     private TextFileService fileService;
@@ -24,12 +26,17 @@ public class TextFileController {
     }
 
     void update() {
-        fileService.update();
+        fileService.update(inputRequest());
     }
 
     void delete() {
         fileService.delete();
     }
 
+    private String inputRequest() {
+        System.out.println("Input data at file: ");
+        Scanner scanner = new Scanner(System.in);
+        return "\n" + scanner.nextLine();
+    }
 
 }
