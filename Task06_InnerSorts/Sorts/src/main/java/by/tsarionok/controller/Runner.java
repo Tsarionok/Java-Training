@@ -4,7 +4,7 @@ import by.tsarionok.service.SortService;
 
 import java.util.List;
 
-public class Runner { // выбором, двусторонним выбором, пузырьком, шейкерная
+public class Runner {
     public static void main(String[] args) {
         List<Double> numbers;
         ReadFileController readFileController = new ReadFileController();
