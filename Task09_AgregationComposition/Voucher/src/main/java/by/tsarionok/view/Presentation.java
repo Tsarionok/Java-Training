@@ -1,4 +1,4 @@
-package by.tsarionok.presentation;
+package by.tsarionok.view;
 
 import by.tsarionok.controller.EditVoucher;
 
