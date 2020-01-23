@@ -1,4 +1,11 @@
 # Java-Training
 ### Task01: [LinearPrograms](https://github.com/Tsarionok/Java-Training/tree/master/Task01_LinearPrograms)
-### Task02: Branches
-### Task03: Cycles
+### Task02: [Branches](https://github.com/Tsarionok/Java-Training/tree/master/Task02_Branches)
+### Task03: [Cycles](https://github.com/Tsarionok/Java-Training/tree/master/Task03_Cycles)
+### Task04: [Decomposition](https://github.com/Tsarionok/Java-Training/tree/master/Task04_Decomposition)
+### Task05: [Arrays](https://github.com/Tsarionok/Java-Training/tree/master/Task05_Arrays)
+### Task06: [InnerSorts](https://github.com/Tsarionok/Java-Training/tree/master/Task06_InnerSorts)
+### Task07: [TwoDementionalArrays](https://github.com/Tsarionok/Java-Training/tree/master/Task07/TwoDementionalArrays)
+### Task08: [OOP](https://github.com/Tsarionok/Java-Training/tree/master/Task08_OOP)
+### Task09: [AgregationComposition](https://github.com/Tsarionok/Java-Training/tree/master/Task09_AgregationComposition)
+### Task10: [BasicOOP](https://github.com/Tsarionok/Java-Training/tree/master/Task10_BasicOOP)
