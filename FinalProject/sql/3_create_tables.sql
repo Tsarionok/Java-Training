@@ -14,7 +14,7 @@ FOREIGN KEY ( `country_id` ) REFERENCES `country` ( `id` ) ON
 UPDATE CASCADE ON
 DELETE CASCADE ) DEFAULT CHARACTER SET utf8;
 
-CREATE TABLE `film` ( `id` INTEGER NOT NULL AUTO_INCREMENT , `name` VARCHAR ( 255 ) NOT NULL , `release_date` DATE NOT NULL , `image_path` VARCHAR ( 255 ) , `description` TEXT , `country_id` INTEGER , `category_id` INTEGER , FOREIGN KEY ( `country_id` ) REFERENCES `country` ( `id` ) ON
+CREATE TABLE `film` ( `id` INTEGER NOT NULL AUTO_INCREMENT , `name` VARCHAR ( 255 ) NOT NULL , `release_date` DATE NOT NULL , `image_path` VARCHAR ( 255 ) , `description` TEXT , `country_id` INTEGER , `category_id` INTEGER , PRIMARY KEY ( `id` ) , FOREIGN KEY ( `country_id` ) REFERENCES `country` ( `id` ) ON
 UPDATE CASCADE ON
 DELETE
 RESTRICT,
@@ -22,7 +22,7 @@ FOREIGN KEY ( `category_id` ) REFERENCES `category` ( `id` ) ON
 UPDATE CASCADE ON
 DELETE RESTRICT ) DEFAULT CHARACTER SET utf8;
 
-CREATE TABLE `see_later` ( `id` INTEGER NOT NULL AUTO_INCREMENT , `user_id` INTEGER NOT NULL , `film_id` INTEGER NOT NULL , FOREIGN KEY ( `user_id` ) REFERENCES `user` ( `id` ) ON
+CREATE TABLE `see_later` ( `id` INTEGER NOT NULL AUTO_INCREMENT , `user_id` INTEGER NOT NULL , `film_id` INTEGER NOT NULL , PRIMARY KEY ( `id` ) , FOREIGN KEY ( `user_id` ) REFERENCES `user` ( `id` ) ON
 UPDATE CASCADE ON
 DELETE
 CASCADE,
@@ -30,7 +30,7 @@ FOREIGN KEY ( `film_id` ) REFERENCES `film` ( `id` ) ON
 UPDATE CASCADE ON
 DELETE CASCADE ) DEFAULT CHARACTER SET utf8;
 
-CREATE TABLE `viewed_before` ( `id` INTEGER NOT NULL AUTO_INCREMENT , `user_id` INTEGER NOT NULL , `film_id` INTEGER NOT NULL , FOREIGN KEY ( `user_id` ) REFERENCES `user` ( `id` ) ON
+CREATE TABLE `viewed_before` ( `id` INTEGER NOT NULL AUTO_INCREMENT , `user_id` INTEGER NOT NULL , `film_id` INTEGER NOT NULL , PRIMARY KEY ( `id` ) , FOREIGN KEY ( `user_id` ) REFERENCES `user` ( `id` ) ON
 UPDATE CASCADE ON
 DELETE
 CASCADE,
