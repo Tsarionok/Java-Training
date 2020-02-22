@@ -6,7 +6,7 @@ CREATE TABLE `country` ( `id` INTEGER NOT NULL AUTO_INCREMENT , `name` VARCHAR (
 
 CREATE TABLE `category` ( `id` INTEGER NOT NULL AUTO_INCREMENT , `name` VARCHAR ( 255 ) NOT NULL , PRIMARY KEY ( `id` ) ) DEFAULT CHARACTER SET utf8;
 
-CREATE TABLE `user_info` ( `user_id` INTEGER NOT NULL UNIQUE , `country_id` INTEGER , `email` VARCHAR ( 255 ) UNIQUE , `sex` CHAR ( 1 ) CHECK ( `sex` IN ( 'm' ,  'w' ) ) , `birth_date` DATE , FOREIGN KEY ( `user_id` ) REFERENCES `user` ( `id` ) ON
+CREATE TABLE `user_info` ( `user_id` INTEGER NOT NULL UNIQUE , `country_id` INTEGER , `email` VARCHAR ( 255 ) UNIQUE , `sex` CHAR ( 1 ) CHECK ( `sex` IN (  'm' ,   'w' ) ) , `birth_date` DATE , FOREIGN KEY ( `user_id` ) REFERENCES `user` ( `id` ) ON
 UPDATE CASCADE ON
 DELETE
 CASCADE,
