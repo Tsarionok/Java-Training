@@ -93,4 +93,17 @@ public class User extends Entity {
     public int hashCode() {
         return Objects.hash(super.hashCode(), login, password, role, country, email, sex, birthDate);
     }
+
+    // этот toString пока использую для тестов, возможно в будущем - деприкейтед =)
+    @Override
+    public String toString() {
+        return "" +
+                login + '\n' +
+                password + '\n' +
+                role + '\n' +
+                country + '\n' +
+                email + '\n' +
+                sex + '\n' +
+                birthDate + '\n';
+    }
 }
