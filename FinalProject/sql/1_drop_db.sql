@@ -1,1 +1,1 @@
-DROP DATABASE IF EXISTS ` movie_viewing_service_db `;
+DROP DATABASE IF EXISTS ` series_catalog_db `;

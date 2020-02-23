@@ -1,1 +1,1 @@
-CREATE DATABASE `movie_viewing_service_db` DEFAULT CHARACTER SET utf8;
+CREATE DATABASE `series_catalog_db` DEFAULT CHARACTER SET utf8;

@@ -1,2 +1,2 @@
-USE ` movie_viewing_service_db ` ;
-INSERT INTO ` user ` (` id `, ` login `, ` password `, ` role `) VALUES (1, 'admin', 'adminpass', 0) ;
+USE ` series_catalog_db ` ;
+INSERT INTO ` users ` (` id `, ` login `, ` password `, ` role `) VALUES (1, 'admin', 'adminpass', 0) ;
