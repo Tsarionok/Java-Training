@@ -52,6 +52,8 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     private static final String DELETE_BY_LOGIN = "DELETE FROM `users` WHERE `users`.login = ?;";
 
+    private static final String CREATE_USER_INFO = "INSERT INTO `user_info` (user_id, email) VALUES (?, ?);";
+
 
     @Override
     public List<User> readAll(int pageNumber, int amountPerPage) {
@@ -166,6 +168,13 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     @Override
     public boolean createUserInfo(User user) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(CREATE_USER_INFO)) {
+            preparedStatement.setInt(1, user.getId());
+            preparedStatement.setString(2, user.getLogin());
+            return preparedStatement.executeUpdate() != 0;
+        } catch (SQLException e) {
+            LOGGER.error("Insert user info exception", e);
+        }
         return false;
     }
 

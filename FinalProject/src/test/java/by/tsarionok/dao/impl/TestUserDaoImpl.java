@@ -84,4 +84,13 @@ public class TestUserDaoImpl {
         boolean actual = userDao.deleteByLogin("hacker");
         assertEquals(true, actual);
     }
+
+    @Test
+    public void createUserInfo() {
+        User user = new User();
+        user.setId(2);
+        user.setEmail("example@gmail.com");
+        boolean actual = userDao.createUserInfo(user);
+        assertEquals(true, actual);
+    }
 }
