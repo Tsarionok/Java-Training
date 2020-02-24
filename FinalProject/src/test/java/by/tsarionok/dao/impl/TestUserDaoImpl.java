@@ -40,7 +40,14 @@ public class TestUserDaoImpl {
                     "null\n" +
                     "null\n" +
                     "null\n";
-
+    private static final String EXPECTED_READ_BY_EMAIL_ADMIN =
+            "admin\n" +
+                    "null\n" +
+                    "ADMIN\n" +
+                    "Беларусь\n" +
+                    "admin_serega@mail.ru\n" +
+                    "м\n" +
+                    "1999-11-10\n";
 
     @Test
     public void readAll1() {
@@ -59,8 +66,14 @@ public class TestUserDaoImpl {
     @Test
     public void findByLogin() {
         UserDaoImpl userDao = new UserDaoImpl();
-        User actual = userDao.findByLogin("user888");
-        System.out.println(actual);
+        User actual = userDao.findByLogin("user");
         assertEquals(EXPECTED_READ_BY_LOGIN_ADMIN, actual.toString());
+    }
+
+    @Test
+    public void findByEmail() {
+        UserDaoImpl userDao = new UserDaoImpl();
+        User actual = userDao.findByEmail("admin_serega@mail.ru");
+        assertEquals(EXPECTED_READ_BY_EMAIL_ADMIN, actual.toString());
     }
 }
