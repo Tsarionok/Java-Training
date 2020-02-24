@@ -9,3 +9,4 @@
 ### Task08: [OOP](https://github.com/Tsarionok/Java-Training/tree/master/Task08_OOP)
 ### Task09: [AgregationComposition](https://github.com/Tsarionok/Java-Training/tree/master/Task09_AgregationComposition)
 ### Task10: [BasicOOP](https://github.com/Tsarionok/Java-Training/tree/master/Task10_BasicOOP)
+### Final_Project: [Series_Catalog](https://github.com/Tsarionok/Java-Training/tree/master/FinalProject)
