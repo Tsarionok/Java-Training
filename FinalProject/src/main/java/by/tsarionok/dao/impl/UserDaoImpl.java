@@ -62,6 +62,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             "`user_info`.sex = ?, " +
             "`user_info`.birth_date = ? WHERE `user_info`.user_id = ?;";
 
+    private static final String CHANGE_PASSWORD = "UPDATE `users` SET password = ? WHERE id = ?;";
 
     @Override
     public List<User> readAll(int pageNumber, int amountPerPage) {
@@ -236,6 +237,13 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     @Override
     public boolean changePassword(String pass, int userId) {
+        try (PreparedStatement statement = connection.prepareStatement(CHANGE_PASSWORD)) {
+            statement.setString(1, pass);
+            statement.setInt(2, userId);
+            return statement.executeUpdate() != 0;
+        } catch (SQLException e) {
+            LOGGER.error("Changing password exception", e);
+        }
         return false;
     }
 

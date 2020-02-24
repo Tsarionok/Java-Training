@@ -105,4 +105,10 @@ public class TestUserDaoImpl {
         boolean actual = userDao.updateUserInfo(user);
         assertEquals(true, actual);
     }
+
+    @Test
+    public void changePassword() {
+        boolean actual = userDao.changePassword("newpass", 2);
+        assertEquals(true, actual);
+    }
 }
