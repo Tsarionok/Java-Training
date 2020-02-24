@@ -50,6 +50,9 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             "LEFT OUTER JOIN `countries` ON `user_info`.country_id = `countries`.id " +
             "WHERE `user_info`.email = ?;";
 
+    private static final String DELETE_BY_LOGIN = "DELETE FROM `users` WHERE `users`.login = ?;";
+
+
     @Override
     public List<User> readAll(int pageNumber, int amountPerPage) {
         List<User> users = new LinkedList<>();
@@ -147,6 +150,12 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     @Override
     public boolean deleteByLogin(String login) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_BY_LOGIN)) {
+            preparedStatement.setString(1, login);
+            return preparedStatement.executeUpdate() != 0;
+        } catch (SQLException e) {
+            LOGGER.error("Delete by login exception", e);
+        }
         return false;
     }
 

@@ -49,31 +49,39 @@ public class TestUserDaoImpl {
                     "м\n" +
                     "1999-11-10\n";
 
+    UserDaoImpl userDao;
+
+    public TestUserDaoImpl() {
+        userDao = new UserDaoImpl();
+    }
+
     @Test
     public void readAll1() {
-        UserDaoImpl userDao = new UserDaoImpl();
         List<User> actual = userDao.readAll(1, 1);
         assertEquals("[" + EXPECTED_READ_ALL_1_1 + "]", actual.toString());
     }
 
     @Test
     public void readAll2() {
-        UserDaoImpl userDao = new UserDaoImpl();
         List<User> actual = userDao.readAll(1, 2);
         assertEquals("[" + EXPECTED_READ_ALL_1_2 + "]", actual.toString());
     }
 
     @Test
     public void findByLogin() {
-        UserDaoImpl userDao = new UserDaoImpl();
         User actual = userDao.findByLogin("user");
         assertEquals(EXPECTED_READ_BY_LOGIN_ADMIN, actual.toString());
     }
 
     @Test
     public void findByEmail() {
-        UserDaoImpl userDao = new UserDaoImpl();
         User actual = userDao.findByEmail("admin_serega@mail.ru");
         assertEquals(EXPECTED_READ_BY_EMAIL_ADMIN, actual.toString());
+    }
+
+    @Test
+    public void deleteByLogin() {
+        boolean actual = userDao.deleteByLogin("hacker");
+        assertEquals(true, actual);
     }
 }
