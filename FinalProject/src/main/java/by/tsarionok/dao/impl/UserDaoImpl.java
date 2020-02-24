@@ -7,9 +7,7 @@ import by.tsarionok.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -53,6 +51,16 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     private static final String DELETE_BY_LOGIN = "DELETE FROM `users` WHERE `users`.login = ?;";
 
     private static final String CREATE_USER_INFO = "INSERT INTO `user_info` (user_id, email) VALUES (?, ?);";
+
+    private static final String SELECT_COUNTRY_BY_NAME = "SELECT " +
+            "`countries`.id AS `country_id` " +
+            "FROM `countries` WHERE `countries`.name = ?;";
+
+    private static final String UPDATE_USER_INFO = "UPDATE `user_info` SET " +
+            "`user_info`.country_id = ?, " +
+            "`user_info`.email = ?, " +
+            "`user_info`.sex = ?, " +
+            "`user_info`.birth_date = ? WHERE `user_info`.user_id = ?;";
 
 
     @Override
@@ -120,7 +128,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     }
 
     @Override
-    public User findByEmail(String email) {
+    public User findByEmail(final String email) {
         User user = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -151,7 +159,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     }
 
     @Override
-    public boolean deleteByLogin(String login) {
+    public boolean deleteByLogin(final String login) {
         try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_BY_LOGIN)) {
             preparedStatement.setString(1, login);
             return preparedStatement.executeUpdate() != 0;
@@ -162,12 +170,60 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     }
 
     @Override
-    public boolean updateUserInfo(User user) {
+    public boolean updateUserInfo(final User user) {
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            Integer countryId = null;
+            if (user.getCountry() != null && !user.getCountry().isEmpty()) {
+                statement = connection.prepareStatement(SELECT_COUNTRY_BY_NAME);
+                statement.setString(1, user.getCountry());
+                resultSet = statement.executeQuery();
+                if (resultSet.next()) {
+                    countryId = resultSet.getInt("country_id");
+                } else {
+                    return false;
+                }
+                closeResources(statement, resultSet);
+            }
+            statement = connection.prepareStatement(UPDATE_USER_INFO);
+
+            if (user.getCountry() != null) {
+                statement.setInt(1, countryId);
+            } else {
+                statement.setNull(1, Types.INTEGER);
+            }
+            if (user.getEmail() != null) {
+                statement.setString(2, user.getEmail());
+            } else {
+                statement.setNull(2, Types.VARCHAR);
+            }
+            if (user.getSex() != null) {
+                statement.setString(3, user.getSex());
+            } else {
+                statement.setNull(3, Types.CHAR);
+            }
+            if (user.getBirthDate() != null) {
+                statement.setDate(4, new Date(user.getBirthDate().getTime()));
+            } else {
+                statement.setNull(4, Types.DATE);
+            }
+            statement.setInt(5, user.getId());
+            return statement.executeUpdate() != 0;
+        } catch (SQLException e) {
+            LOGGER.error("Update user info exception", e);
+        } finally {
+            try {
+                closeResources(statement, resultSet);
+            } catch (SQLException e) {
+                LOGGER.error("Close resources exception", e);
+            }
+        }
         return false;
     }
 
     @Override
-    public boolean createUserInfo(User user) {
+    public boolean createUserInfo(final User user) {
         try (PreparedStatement preparedStatement = connection.prepareStatement(CREATE_USER_INFO)) {
             preparedStatement.setInt(1, user.getId());
             preparedStatement.setString(2, user.getLogin());

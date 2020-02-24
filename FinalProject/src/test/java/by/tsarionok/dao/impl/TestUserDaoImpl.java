@@ -3,6 +3,7 @@ package by.tsarionok.dao.impl;
 import by.tsarionok.entity.User;
 import org.junit.Test;
 
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -91,6 +92,17 @@ public class TestUserDaoImpl {
         user.setId(2);
         user.setEmail("example@gmail.com");
         boolean actual = userDao.createUserInfo(user);
+        assertEquals(true, actual);
+    }
+
+    @Test
+    public void updateUserInfo() {
+        User user = new User();
+        user.setId(2);
+        user.setCountry("Франция");
+        user.setEmail("updateFr@gmail.com");
+        user.setBirthDate(new Date(830304000000l)); // 1996-04-24
+        boolean actual = userDao.updateUserInfo(user);
         assertEquals(true, actual);
     }
 }
