@@ -111,4 +111,10 @@ public class TestUserDaoImpl {
         boolean actual = userDao.changePassword("newpass", 2);
         assertEquals(true, actual);
     }
+
+    @Test
+    public void findPasswordByLogin() {
+        String actual = userDao.findPasswordByLogin("admin");
+        assertEquals("adminpass", actual);
+    }
 }

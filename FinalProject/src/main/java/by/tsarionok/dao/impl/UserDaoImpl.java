@@ -64,6 +64,9 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     private static final String CHANGE_PASSWORD = "UPDATE `users` SET password = ? WHERE id = ?;";
 
+    private static final String SELECT_PASSWORD_BY_LOGIN = "SELECT `users`.password FROM `users` " +
+            "WHERE `users`.login = ?;";
+
     @Override
     public List<User> readAll(int pageNumber, int amountPerPage) {
         List<User> users = new LinkedList<>();
@@ -249,7 +252,26 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     @Override
     public String findPasswordByLogin(String login) {
-        return null;
+        String pass = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.prepareStatement(SELECT_PASSWORD_BY_LOGIN);
+            statement.setString(1, login);
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                pass = resultSet.getString("password");
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Select pass by login exception", e);
+        } finally {
+            try {
+                closeResources(statement, resultSet);
+            } catch (SQLException e) {
+                LOGGER.error("Close resources exception");
+            }
+        }
+        return pass;
     }
 
     @Override
