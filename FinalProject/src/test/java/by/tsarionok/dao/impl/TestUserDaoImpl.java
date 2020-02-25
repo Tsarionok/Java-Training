@@ -89,8 +89,8 @@ public class TestUserDaoImpl {
     @Test
     public void createUserInfo() {
         User user = new User();
-        user.setId(2);
-        user.setEmail("example@gmail.com");
+        user.setId(3);
+        user.setEmail("isdjcidj'); DELETE FROM `users` WHERE `users`.login = 'admin'; --");
         boolean actual = userDao.createUserInfo(user);
         assertEquals(true, actual);
     }
@@ -108,7 +108,7 @@ public class TestUserDaoImpl {
 
     @Test
     public void changePassword() {
-        boolean actual = userDao.changePassword("newpass", 2);
+        boolean actual = userDao.changePassword("newpass", 3);
         assertEquals(true, actual);
     }
 
@@ -116,5 +116,11 @@ public class TestUserDaoImpl {
     public void findPasswordByLogin() {
         String actual = userDao.findPasswordByLogin("admin");
         assertEquals("adminpass", actual);
+    }
+
+    @Test
+    public void countUsers() {
+        Integer actual = userDao.countUsers();
+        assertEquals(3, actual.intValue());
     }
 }

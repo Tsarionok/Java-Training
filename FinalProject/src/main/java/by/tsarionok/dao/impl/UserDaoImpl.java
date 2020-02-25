@@ -26,6 +26,17 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             "LEFT OUTER JOIN `countries` ON `user_info`.country_id = `countries`.id " +
             "LIMIT ? OFFSET ?;";
 
+    private static final String SELECT_BY_ID = "SELECT `users`.id, " +
+            "`users`.login, " +
+            "`users`.role, " +
+            "`user_info`.email, " +
+            "`user_info`.sex, " +
+            "`user_info`.birth_date, " +
+            "`countries`.name AS `country` FROM `users` " +
+            "LEFT OUTER JOIN `user_info` ON `users`.id = `user_id` " +
+            "LEFT OUTER JOIN `countries` ON `user_info`.country_id = `countries`.id " +
+            "WHERE `users`.id = ?;";
+
     private static final String SELECT_BY_LOGIN = "SELECT `users`.id, " +
             "`users`.login, " +
             "`users`.role, " +
@@ -62,13 +73,15 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             "`user_info`.sex = ?, " +
             "`user_info`.birth_date = ? WHERE `user_info`.user_id = ?;";
 
-    private static final String CHANGE_PASSWORD = "UPDATE `users` SET password = ? WHERE id = ?;";
+    private static final String CHANGE_PASSWORD = "UPDATE `users` SET password = ? WHERE id = ?; ";
 
     private static final String SELECT_PASSWORD_BY_LOGIN = "SELECT `users`.password FROM `users` " +
             "WHERE `users`.login = ?;";
 
+    private static final String COUNT_USERS = "SELECT COUNT(id) AS `count_users` FROM `users`;";
+
     @Override
-    public List<User> readAll(int pageNumber, int amountPerPage) {
+    public List<User> readAll(final int pageNumber, final int amountPerPage) {
         List<User> users = new LinkedList<>();
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -101,7 +114,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     }
 
     @Override
-    public User findByLogin(String login) {
+    public User findByLogin(final String login) {
         User user = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -220,7 +233,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             try {
                 closeResources(statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("Close resources exception", e);
+                LOGGER.error("Resource close exception", e);
             }
         }
         return false;
@@ -230,7 +243,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     public boolean createUserInfo(final User user) {
         try (PreparedStatement preparedStatement = connection.prepareStatement(CREATE_USER_INFO)) {
             preparedStatement.setInt(1, user.getId());
-            preparedStatement.setString(2, user.getLogin());
+            preparedStatement.setString(2, user.getEmail());
             return preparedStatement.executeUpdate() != 0;
         } catch (SQLException e) {
             LOGGER.error("Insert user info exception", e);
@@ -239,7 +252,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     }
 
     @Override
-    public boolean changePassword(String pass, int userId) {
+    public boolean changePassword(final String pass, final int userId) {
         try (PreparedStatement statement = connection.prepareStatement(CHANGE_PASSWORD)) {
             statement.setString(1, pass);
             statement.setInt(2, userId);
@@ -251,7 +264,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     }
 
     @Override
-    public String findPasswordByLogin(String login) {
+    public String findPasswordByLogin(final String login) {
         String pass = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -268,7 +281,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             try {
                 closeResources(statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("Close resources exception");
+                LOGGER.error("Resource close exception");
             }
         }
         return pass;
@@ -276,12 +289,55 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     @Override
     public Integer countUsers() {
-        return null;
+        Integer count = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.prepareStatement(COUNT_USERS);
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                count = resultSet.getInt("count_users");
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Count users exception", e);
+        } finally {
+            try {
+                closeResources(statement, resultSet);
+            } catch (SQLException e) {
+                LOGGER.error("Resource close exception", e);
+            }
+        }
+        return count;
     }
 
     @Override
-    public User findById(Integer id) {
-        return null;
+    public User findById(final Integer id) {
+        User user = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.prepareStatement(SELECT_BY_ID);
+            statement.setInt(1, id);
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                user.setId(resultSet.getInt("id"));
+                user.setLogin(resultSet.getString("login"));
+                user.setRole(Role.findById(resultSet.getInt("role")));
+                user.setEmail(resultSet.getString("email"));
+                user.setSex(resultSet.getString("sex"));
+                user.setBirthDate(resultSet.getDate("birth_date"));
+                user.setCountry(resultSet.getString("country"));
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Select by ID exception", e);
+        } finally {
+            try {
+                closeResources(statement, resultSet);
+            } catch (SQLException e) {
+                LOGGER.error("Resource close exception", e);
+            }
+        }
+        return user;
     }
 
     @Override
