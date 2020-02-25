@@ -1,12 +1,18 @@
 USE `series_catalog_db` ;
 
-CREATE TABLE `users` ( `id` INTEGER NOT NULL AUTO_INCREMENT , `login` VARCHAR ( 32 ) NOT NULL UNIQUE , `password` VARCHAR ( 255 ) NOT NULL , `role` TINYINT NOT NULL CHECK ( `role` IN ( 0 , 1 , 2 ) ) , PRIMARY KEY ( `id` ) ) DEFAULT CHARACTER SET utf8;
+CREATE TABLE `users` ( `id` INTEGER NOT NULL AUTO_INCREMENT , `login` VARCHAR ( 32 ) NOT NULL UNIQUE , `password` VARCHAR ( 255 ) NOT NULL ,
+               /*
+   * 0 - администратор 	(Role.ADMIN)
+   * 1 - редактор 		(Role.EDITOR)
+   * 2 - пользователь 	(Role.USER)
+   */
+       `role` TINYINT NOT NULL CHECK ( `role` IN ( 0 , 1 , 2 ) ) , PRIMARY KEY ( `id` ) ) DEFAULT CHARACTER SET utf8;
 
 CREATE TABLE `countries` ( `id` INTEGER NOT NULL AUTO_INCREMENT , `name` VARCHAR ( 255 ) NOT NULL , PRIMARY KEY ( `id` ) ) DEFAULT CHARACTER SET utf8;
 
 CREATE TABLE `categories` ( `id` INTEGER NOT NULL AUTO_INCREMENT , `name` VARCHAR ( 255 ) NOT NULL , PRIMARY KEY ( `id` ) ) DEFAULT CHARACTER SET utf8;
 
-CREATE TABLE `user_info` ( `user_id` INTEGER NOT NULL UNIQUE , `country_id` INTEGER , `email` VARCHAR ( 255 ) UNIQUE , `sex` CHAR ( 1 ) CHECK ( `sex` IN (  'м' ,   'ж' ) ) , `birth_date` DATE , FOREIGN KEY ( `user_id` ) REFERENCES `users` ( `id` ) ON
+CREATE TABLE `user_info` ( `user_id` INTEGER NOT NULL UNIQUE , `country_id` INTEGER , `email` VARCHAR ( 255 ) UNIQUE , `birth_date` DATE , FOREIGN KEY ( `user_id` ) REFERENCES `users` ( `id` ) ON
 UPDATE CASCADE ON
 DELETE
 CASCADE,

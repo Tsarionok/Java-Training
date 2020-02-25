@@ -9,7 +9,6 @@ public class User extends Entity {
     private Role role;
     private String country;
     private String email;
-    private String sex;
     private Date birthDate;
 
     public String getLogin() {
@@ -52,14 +51,6 @@ public class User extends Entity {
         this.email = email;
     }
 
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
     public Date getBirthDate() {
         return birthDate;
     }
@@ -85,13 +76,12 @@ public class User extends Entity {
                 role == user.role &&
                 Objects.equals(country, user.country) &&
                 Objects.equals(email, user.email) &&
-                Objects.equals(sex, user.sex) &&
                 Objects.equals(birthDate, user.birthDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), login, password, role, country, email, sex, birthDate);
+        return Objects.hash(super.hashCode(), login, password, role, country, email, birthDate);
     }
 
     // этот toString пока использую для тестов, возможно в будущем - деприкейтед =)
@@ -103,7 +93,6 @@ public class User extends Entity {
                 role + '\n' +
                 country + '\n' +
                 email + '\n' +
-                sex + '\n' +
                 birthDate + '\n';
     }
 }

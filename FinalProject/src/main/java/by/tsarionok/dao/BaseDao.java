@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public abstract class BaseDao {
     protected Connection connection;
 
-    // Этот конструктор скорее всего временный, просто чтобы потестить дао
+    // Этот конструктор временный, просто чтобы потестить дао
     public BaseDao() {
         this.connection = ConnectorDB.getConnection();
     }

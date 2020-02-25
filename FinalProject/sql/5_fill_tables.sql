@@ -25,8 +25,8 @@ INSERT INTO ` categories ` (name) VALUES ('Детективы'),
 ('Боевик'),
 ('Семейные') ;
 
-INSERT INTO ` user_info ` (user_id, country_id, email, sex, birth_date) VALUES (1, 10, 'admin_serega@mail.ru', 'м', '1999-11-11'),
-(3, 3, 'maria@gmail.com', 'ж', NULL) ;
+INSERT INTO ` user_info ` (user_id, country_id, email, birth_date) VALUES (1, 10, 'admin_serega@mail.ru', '1999-11-11'),
+(3, 3, 'maria@gmail.com', NULL) ;
 
 INSERT INTO ` serials ` (id, name, premier_date, image_path, country_id, category_id, description) VALUES (1, 'Шерлок', '2010-07-22', NULL, 2, 1, NULL),
 (2, 'Во все тяжкие', '2008-01-20', NULL, 1, 2, NULL),

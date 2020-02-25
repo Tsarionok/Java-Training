@@ -1,40 +1,37 @@
 # Прочитать всех пользователей
 SELECT
-`users`.ID,
-`users`.LOGIN,
-`users`.ROLE,
-`user_info`.EMAIL,
-`user_info`.SEX,
-`user_info`.BIRTH_DATE,
-`countries`.NAME AS `country` FROM `users`
-                                   LEFT OUTER JOIN `user_info` ON `users`.ID = `user_id`
-                                   LEFT OUTER JOIN `countries` ON `user_info`.COUNTRY_ID = `countries`.ID;
+`users`.id,
+`users`.login,
+`users`.role,
+`user_info`.email,
+`user_info`.birth_date,
+`countries`.name AS `country` FROM `users`
+                                   LEFT OUTER JOIN `user_info` ON `users`.id = `user_id`
+                                   LEFT OUTER JOIN `countries` ON `user_info`.country_id = `countries`.id;
 
         # Прочитать пользователя по логину
 SELECT
-`users`.ID,
-`users`.LOGIN,
-`users`.ROLE,
-`user_info`.EMAIL,
-`user_info`.SEX,
-`user_info`.BIRTH_DATE,
-`countries`.NAME AS `country` FROM `users`
-                                   LEFT OUTER JOIN `user_info` ON `users`.ID = `user_id`
-                                   LEFT OUTER JOIN `countries` ON `user_info`.COUNTRY_ID = `countries`.ID
-WHERE `users`.LOGIN =  'admin';
+`users`.id,
+`users`.login,
+`users`.role,
+`user_info`.email,
+`user_info`.birth_date,
+`countries`.name AS `country` FROM `users`
+                                   LEFT OUTER JOIN `user_info` ON `users`.id = `user_id`
+                                   LEFT OUTER JOIN `countries` ON `user_info`.country_id = `countries`.id
+WHERE `users`.login =  'admin';
 
         # Прочитать пользователя по email
 SELECT
-`users`.ID,
-`users`.LOGIN,
-`users`.ROLE,
-`user_info`.EMAIL,
-`user_info`.SEX,
-`user_info`.BIRTH_DATE,
-`countries`.NAME AS `country` FROM `users`
-                                   LEFT OUTER JOIN `user_info` ON `users`.ID = `user_id`
-                                   LEFT OUTER JOIN `countries` ON `user_info`.COUNTRY_ID = `countries`.ID
-WHERE `user_info`.EMAIL =  'admin_serega@mail.ru';
+`users`.id,
+`users`.login,
+`users`.role,
+`user_info`.email,
+`user_info`.birth_date,
+`countries`.name AS `country` FROM `users`
+                                   LEFT OUTER JOIN `user_info` ON `users`.id = `user_id`
+                                   LEFT OUTER JOIN `countries` ON `user_info`.country_id = `countries`.id
+WHERE `user_info`.email =  'admin_serega@mail.ru';
 
         # Удалить пользователя по логину
         -- DELETE FROM `users` WHERE `users`.login = 'editor';
@@ -43,13 +40,25 @@ WHERE `user_info`.EMAIL =  'admin_serega@mail.ru';
         -- INSERT INTO `user_info` (user_id, email) VALUES (2, 'user@gmail.com');
 
         # Прочитать название страны по ID пользователя
-SELECT `countries`.ID AS `counry_id` FROM `countries` WHERE `countries`.NAME =  'Беларусь';
+SELECT `countries`.id AS `counry_id` FROM `countries` WHERE `countries`.name =  'Беларусь';
 
         # Обноить информацию о пользователе
         -- UPDATE `user_info` SET country_id = 4, email = 'new@mail.ru', sex = 'м', birth_date = '1980-01-04' WHERE user_id = 2;
 
         # Прочитать пароль по логину
-SELECT `users`.PASSWORD FROM `users` WHERE `users`.LOGIN =  'admin';
+SELECT `users`.password FROM `users` WHERE `users`.login =  'admin';
 
         # Найти количество пользователей
-SELECT COUNT (ID) AS `count_users` FROM `users`;
+SELECT COUNT (id) AS `count_users` FROM `users`;
+
+        # Найти пользователя по ID
+SELECT
+`users`.id,
+`users`.login,
+`users`.role,
+`user_info`.email,
+`user_info`.birth_date,
+`countries`.name AS `country` FROM `users`
+                                   LEFT OUTER JOIN `user_info` ON `users`.id = `user_id`
+                                   LEFT OUTER JOIN `countries` ON `user_info`.country_id = `countries`.id
+WHERE `users`.id = 1;

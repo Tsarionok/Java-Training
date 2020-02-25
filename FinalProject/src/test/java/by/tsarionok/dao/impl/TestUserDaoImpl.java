@@ -16,7 +16,6 @@ public class TestUserDaoImpl {
                     "ADMIN\n" +
                     "Беларусь\n" +
                     "admin_serega@mail.ru\n" +
-                    "м\n" +
                     "1999-11-10\n";
     private static final String EXPECTED_READ_ALL_1_2 =
             "admin\n" +
@@ -24,20 +23,17 @@ public class TestUserDaoImpl {
                     "ADMIN\n" +
                     "Беларусь\n" +
                     "admin_serega@mail.ru\n" +
-                    "м\n" +
                     "1999-11-10\n" +
-                    ", editor\n" +
-                    "null\n" +
-                    "EDITOR\n" +
-                    "Россия\n" +
-                    "maria@gmail.com\n" +
-                    "ж\n" +
-                    "null\n";
-    private static final String EXPECTED_READ_BY_LOGIN_ADMIN =
-            "user\n" +
+                    ", user\n" +
                     "null\n" +
                     "USER\n" +
                     "null\n" +
+                    "null\n" +
+                    "null\n";
+    private static final String EXPECTED_READ_BY_LOGIN_USER =
+            "user\n" +
+                    "null\n" +
+                    "USER\n" +
                     "null\n" +
                     "null\n" +
                     "null\n";
@@ -47,7 +43,6 @@ public class TestUserDaoImpl {
                     "ADMIN\n" +
                     "Беларусь\n" +
                     "admin_serega@mail.ru\n" +
-                    "м\n" +
                     "1999-11-10\n";
 
     UserDaoImpl userDao;
@@ -71,7 +66,7 @@ public class TestUserDaoImpl {
     @Test
     public void findByLogin() {
         User actual = userDao.findByLogin("user");
-        assertEquals(EXPECTED_READ_BY_LOGIN_ADMIN, actual.toString());
+        assertEquals(EXPECTED_READ_BY_LOGIN_USER, actual.toString());
     }
 
     @Test
@@ -89,7 +84,7 @@ public class TestUserDaoImpl {
     @Test
     public void createUserInfo() {
         User user = new User();
-        user.setId(3);
+        user.setId(2);
         user.setEmail("isdjcidj'); DELETE FROM `users` WHERE `users`.login = 'admin'; --");
         boolean actual = userDao.createUserInfo(user);
         assertEquals(true, actual);
