@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Viewed extends Entity {
     private User user;
-    private Film film;
+    private Serial serial;
 
     public User getUser() {
         return user;
@@ -14,12 +14,12 @@ public class Viewed extends Entity {
         this.user = user;
     }
 
-    public Film getFilm() {
-        return film;
+    public Serial getSerial() {
+        return serial;
     }
 
-    public void setFilm(Film film) {
-        this.film = film;
+    public void setSerial(Serial serial) {
+        this.serial = serial;
     }
 
     @Override
@@ -35,11 +35,11 @@ public class Viewed extends Entity {
         }
         Viewed viewed = (Viewed) o;
         return Objects.equals(user, viewed.user) &&
-                Objects.equals(film, viewed.film);
+                Objects.equals(serial, viewed.serial);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), user, film);
+        return Objects.hash(super.hashCode(), user, serial);
     }
 }

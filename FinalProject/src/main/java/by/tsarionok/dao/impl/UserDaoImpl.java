@@ -102,7 +102,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
                 users.add(user);
             }
         } catch (SQLException e) {
-            LOGGER.error("Select all error", e);
+            LOGGER.error("Select all exception", e);
         } finally {
             try {
                 closeResources(statement, resultSet);

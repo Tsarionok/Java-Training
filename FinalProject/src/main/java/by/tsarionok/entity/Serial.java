@@ -3,9 +3,9 @@ package by.tsarionok.entity;
 import java.util.Date;
 import java.util.Objects;
 
-public class Film extends Entity {
+public class Serial extends Entity {
     private String name;
-    private Date releaseDate;
+    private Date premierDate;
     private String imageName;
     private String description;
     private String country;
@@ -19,12 +19,12 @@ public class Film extends Entity {
         this.name = name;
     }
 
-    public Date getReleaseDate() {
-        return releaseDate;
+    public Date getPremierDate() {
+        return premierDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setPremierDate(Date premierDate) {
+        this.premierDate = premierDate;
     }
 
     public String getImageName() {
@@ -70,17 +70,29 @@ public class Film extends Entity {
         if (!super.equals(o)) {
             return false;
         }
-        Film film = (Film) o;
-        return Objects.equals(name, film.name) &&
-                Objects.equals(releaseDate, film.releaseDate) &&
-                Objects.equals(imageName, film.imageName) &&
-                Objects.equals(description, film.description) &&
-                Objects.equals(country, film.country) &&
-                Objects.equals(category, film.category);
+        Serial serial = (Serial) o;
+        return Objects.equals(name, serial.name) &&
+                Objects.equals(premierDate, serial.premierDate) &&
+                Objects.equals(imageName, serial.imageName) &&
+                Objects.equals(description, serial.description) &&
+                Objects.equals(country, serial.country) &&
+                Objects.equals(category, serial.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), name, releaseDate, imageName, description, country, category);
+        return Objects.hash(super.hashCode(), name, premierDate, imageName, description, country, category);
+    }
+
+    @Override
+    public String toString() {
+        return "Serial{" +
+                "name='" + name + '\'' +
+                ", premierDate=" + premierDate +
+                ", imageName='" + imageName + '\'' +
+                ", description='" + description + '\'' +
+                ", country='" + country + '\'' +
+                ", category='" + category + '\'' +
+                '}';
     }
 }

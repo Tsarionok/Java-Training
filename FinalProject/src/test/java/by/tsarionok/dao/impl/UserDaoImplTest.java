@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestUserDaoImpl {
+public class UserDaoImplTest {
 
     private static final String EXPECTED_READ_ALL_1_1 =
             "admin\n" +
@@ -48,7 +48,7 @@ public class TestUserDaoImpl {
 
     UserDaoImpl userDao;
 
-    public TestUserDaoImpl() {
+    public UserDaoImplTest() {
         userDao = new UserDaoImpl();
     }
 

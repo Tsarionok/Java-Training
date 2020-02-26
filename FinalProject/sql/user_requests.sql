@@ -62,3 +62,12 @@ SELECT
                                    LEFT OUTER JOIN `user_info` ON `users`.id = `user_id`
                                    LEFT OUTER JOIN `countries` ON `user_info`.country_id = `countries`.id
 WHERE `users`.id = 1;
+
+        # Добавить пользователя
+        -- INSERT INTO `users`(login, password, role) VALUES ('test', 'testpass', 2);
+
+        # Обновить пользователя (логин, роль)
+        -- UPDATE `users` SET login = 'upTest', role = 1 WHERE id = 5;
+
+        # Удалить пользователя (по ID)
+        -- DELETE FROM `users` WHERE id = 2;
