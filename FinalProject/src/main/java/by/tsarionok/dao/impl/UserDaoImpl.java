@@ -55,6 +55,8 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             "LEFT OUTER JOIN `countries` ON `user_info`.country_id = `countries`.id " +
             "WHERE `user_info`.email = ?;";
 
+    private static final String DELETE = "DELETE FROM `users` WHERE id = ?;";
+
     private static final String DELETE_BY_LOGIN = "DELETE FROM `users` WHERE `users`.login = ?;";
 
     private static final String CREATE = "INSERT INTO `users`(login, password, role) VALUES (?, ?, ?);";
@@ -65,11 +67,12 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             "`countries`.id AS `country_id` " +
             "FROM `countries` WHERE `countries`.name = ?;";
 
+    private static final String UPDATE = "UPDATE `users` SET login = ?, role = ? WHERE id = ?;";
+
     private static final String UPDATE_USER_INFO = "UPDATE `user_info` SET " +
             "`user_info`.country_id = ?, " +
             "`user_info`.email = ?, " +
             "`user_info`.birth_date = ? WHERE `user_info`.user_id = ?;";
-    private static final String UPDATE = "UPDATE `users` SET login = ?, role = ? WHERE id = ?;";
 
     private static final String CHANGE_PASSWORD = "UPDATE `users` SET password = ? WHERE id = ?; ";
 
@@ -373,6 +376,12 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     @Override
     public boolean delete(Integer id) {
+        try (PreparedStatement statement = connection.prepareStatement(DELETE)) {
+            statement.setInt(1, id);
+            return statement.executeUpdate() != 0;
+        } catch (SQLException e) {
+            LOGGER.error("Delete user exception");
+        }
         return false;
     }
 }
