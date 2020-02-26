@@ -57,6 +57,8 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     private static final String DELETE_BY_LOGIN = "DELETE FROM `users` WHERE `users`.login = ?;";
 
+    private static final String CREATE = "INSERT INTO `users`(login, password, role) VALUES (?, ?, ?);";
+
     private static final String CREATE_USER_INFO = "INSERT INTO `user_info` (user_id, email) VALUES (?, ?);";
 
     private static final String SELECT_COUNTRY_BY_NAME = "SELECT " +
@@ -67,6 +69,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             "`user_info`.country_id = ?, " +
             "`user_info`.email = ?, " +
             "`user_info`.birth_date = ? WHERE `user_info`.user_id = ?;";
+    private static final String UPDATE = "UPDATE `users` SET login = ?, role = ? WHERE id = ?;";
 
     private static final String CHANGE_PASSWORD = "UPDATE `users` SET password = ? WHERE id = ?; ";
 
@@ -328,12 +331,43 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     @Override
     public Integer create(User entity) {
-
-        return null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.prepareStatement(CREATE, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, entity.getLogin());
+            statement.setString(2, entity.getPassword());
+            statement.setInt(3, entity.getRole().ordinal());
+            statement.executeUpdate();
+            resultSet = statement.getGeneratedKeys();
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            } else {
+                LOGGER.error("There isn't generated key "
+                        + "after add into table");
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Prepare statement error", e);
+        } finally {
+            try {
+                closeResources(statement, resultSet);
+            } catch (SQLException e) {
+                LOGGER.error("Resource close error", e);
+            }
+        }
+        return 0;
     }
 
     @Override
-    public boolean update(User entity) {
+    public boolean update(final User user) {
+        try (PreparedStatement statement = connection.prepareStatement(UPDATE)) {
+            statement.setString(1, user.getLogin());
+            statement.setInt(2, user.getRole().ordinal());
+            statement.setInt(3, user.getId());
+            return statement.executeUpdate() != 0;
+        } catch (SQLException e) {
+            LOGGER.error("Update user exception", e);
+        }
         return false;
     }
 

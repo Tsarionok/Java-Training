@@ -1,5 +1,6 @@
 package by.tsarionok.dao.impl;
 
+import by.tsarionok.entity.Role;
 import by.tsarionok.entity.User;
 import org.junit.Test;
 
@@ -52,37 +53,37 @@ public class TestUserDaoImpl {
     }
 
     @Test
-    public void readAll1() {
+    public void testReadAll1() {
         List<User> actual = userDao.readAll(1, 1);
         assertEquals("[" + EXPECTED_READ_ALL_1_1 + "]", actual.toString());
     }
 
     @Test
-    public void readAll2() {
+    public void testReadAll2() {
         List<User> actual = userDao.readAll(1, 2);
         assertEquals("[" + EXPECTED_READ_ALL_1_2 + "]", actual.toString());
     }
 
     @Test
-    public void findByLogin() {
+    public void testFindByLogin() {
         User actual = userDao.findByLogin("user");
         assertEquals(EXPECTED_READ_BY_LOGIN_USER, actual.toString());
     }
 
     @Test
-    public void findByEmail() {
+    public void testFindByEmail() {
         User actual = userDao.findByEmail("admin_serega@mail.ru");
         assertEquals(EXPECTED_READ_BY_EMAIL_ADMIN, actual.toString());
     }
 
     @Test
-    public void deleteByLogin() {
+    public void testDeleteByLogin() {
         boolean actual = userDao.deleteByLogin("hacker");
         assertEquals(true, actual);
     }
 
     @Test
-    public void createUserInfo() {
+    public void testCreateUserInfo() {
         User user = new User();
         user.setId(2);
         user.setEmail("isdjcidj'); DELETE FROM `users` WHERE `users`.login = 'admin'; --");
@@ -91,7 +92,7 @@ public class TestUserDaoImpl {
     }
 
     @Test
-    public void updateUserInfo() {
+    public void testUpdateUserInfo() {
         User user = new User();
         user.setId(2);
         user.setCountry("Франция");
@@ -102,20 +103,29 @@ public class TestUserDaoImpl {
     }
 
     @Test
-    public void changePassword() {
+    public void testChangePassword() {
         boolean actual = userDao.changePassword("newpass", 3);
         assertEquals(true, actual);
     }
 
     @Test
-    public void findPasswordByLogin() {
+    public void testFindPasswordByLogin() {
         String actual = userDao.findPasswordByLogin("admin");
         assertEquals("adminpass", actual);
     }
 
     @Test
-    public void countUsers() {
+    public void testCountUsers() {
         Integer actual = userDao.countUsers();
         assertEquals(3, actual.intValue());
+    }
+
+    @Test
+    public void testUpdate() {
+        User user = new User();
+        user.setId(5);
+        user.setLogin("test");
+        user.setRole(Role.USER);
+        boolean actual = userDao.update(user);
     }
 }
