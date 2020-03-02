@@ -27,6 +27,17 @@ public class SerialDaoImpl extends BaseDao implements SerialDao {
             "LEFT OUTER JOIN `categories` ON `categories`.id = `category_id` " +
             "ORDER BY `serials`.id LIMIT ? OFFSET ?;";
 
+    private static final String SELECT_BY_NAME = "SELECT `serials`.id, \n" +
+            "\t\t`serials`.name, \n" +
+            "\t\t`serials`.premier_date,\n" +
+            "        `serials`.image_path,\n" +
+            "        `serials`.description,\n" +
+            "        `countries`.name\tAS `country`,\n" +
+            "        `categories`.name \tAS `category` FROM `serials` \n" +
+            "LEFT OUTER JOIN `countries` ON `countries`.id = `country_id`\n" +
+            "LEFT OUTER JOIN `categories` ON `categories`.id = `category_id`\n" +
+            "WHERE `serials`.name = ?;";
+
     @Override
     public List<Serial> readAll(final int pageNumber, final int amountPerPage) {
         List<Serial> serials = new LinkedList<>();
@@ -61,8 +72,35 @@ public class SerialDaoImpl extends BaseDao implements SerialDao {
     }
 
     @Override
-    public List<Serial> findByName(String name) {
-        return null;
+    public List<Serial> findByName(final String name) {
+        List<Serial> serials = new LinkedList<>();
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.prepareStatement(SELECT_BY_NAME);
+            statement.setString(1, name);
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                Serial serial = new Serial();
+                serial.setId(resultSet.getInt("id"));
+                serial.setName(resultSet.getString("name"));
+                serial.setPremierDate(resultSet.getDate("premier_date"));
+                serial.setImageName(resultSet.getString("image_path"));
+                serial.setDescription(resultSet.getString("description"));
+                serial.setCountry(resultSet.getString("country"));
+                serial.setCategory(resultSet.getString("category"));
+                serials.add(serial);
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Select by serial name exception", e);
+        } finally {
+            try {
+                closeResources(statement, resultSet);
+            } catch (SQLException e) {
+                LOGGER.error("Resource close exception", e);
+            }
+        }
+        return serials;
     }
 
     @Override

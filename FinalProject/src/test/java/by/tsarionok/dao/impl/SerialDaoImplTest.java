@@ -19,4 +19,11 @@ public class SerialDaoImplTest {
         serials = serialDao.readAll(2, 2);
         System.out.println(serials);
     }
+
+    @Test
+    public void findByName() {
+        List<Serial> serials;
+        serials = serialDao.findByName("Шерлок");
+        System.out.println(serials);
+    }
 }
