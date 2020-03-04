@@ -8,46 +8,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Class used to display the menu of the application.
- *
- * @author Sergey Tsarionok
- */
 public class Menu {
 
-    /**
-     * The logger for Menu class.
-     */
     private static final Logger LOGGER = LogManager.getLogger(Menu.class);
-    /**
-     * The pattern describes the main view of the menu entry.
-     */
-    private static final String MENU_PATTERN = "%s - %s\n";
-    /**
-     * The instance used to access to the Controller application layer.
-     */
-    private Controller controller;
-    /**
-     * The list of menu entries.
-     */
-    private List<MenuEntry> entries = new ArrayList<>();
 
-    /**
-     * Sets the exit from the application.
-     */
+    private static final String MENU_PATTERN = "%s - %s\n";
+
+    private Controller controller;
+
+    private List<MenuOption> entries = new ArrayList<>();
+
+
     private boolean isExit = false;
 
-    /**
-     * Constructs menu of the application.
-     */
     public Menu() {
         controller = new Controller();
         fillMenu();
     }
 
-    /**
-     * Starts the menu.
-     */
+
     public void run() {
         while (!isExit) {
             printMenu();
@@ -55,8 +34,7 @@ public class Menu {
             scanner.useDelimiter("\\Z");
             String query = scanner.nextLine();
 
-            if (!query.isEmpty() && (query.startsWith("7")
-                    || query.startsWith("Exit"))) {
+            if (!query.isEmpty() && (query.startsWith("7"))) {
                 isExit = true;
             }
 
@@ -66,18 +44,10 @@ public class Menu {
         }
     }
 
-    /**
-     * Adds entry to menu.
-     *
-     * @param entry the menu entry to add.
-     */
-    private void addEntry(final MenuEntry entry) {
+    private void addEntry(final MenuOption entry) {
         entries.add(entry);
     }
 
-    /**
-     * Prints the menu to the log.
-     */
     private void printMenu() {
         StringBuilder builder = new StringBuilder();
 
@@ -85,7 +55,7 @@ public class Menu {
         builder.append("Type \"Number_of_the_command pattern\" to run:\n");
 
         for (int i = 0; i < entries.size(); i++) {
-            MenuEntry entry = entries.get(i);
+            MenuOption entry = entries.get(i);
             String entryFormatted = String.format(
                     MENU_PATTERN, (i + 1), entry.getTitle());
             builder.append(entryFormatted);
@@ -95,19 +65,15 @@ public class Menu {
         LOGGER.debug(menu);
     }
 
-    /**
-     * Fills the menu tih options that describes the behavior of the
-     * application.
-     */
     private void fillMenu() {
-        addEntry(new MenuEntry("Create the matrix. Pattern: path delimiter."
+        addEntry(new MenuOption("Create the matrix. Pattern: path delimiter."
                 + " Example: \"1 data\\input.txt  \""));
-        addEntry(new MenuEntry("Fill the matrix using index distribution."));
-        addEntry(new MenuEntry("Fill the matrix using concurrent locks."));
-        addEntry(new MenuEntry("Fill the matrix using executor service."));
-        addEntry(new MenuEntry("Fill the matrix using semaphore."));
-        addEntry(new MenuEntry("Save last result. Pattern: path."
+        addEntry(new MenuOption("Fill the matrix using index distribution."));
+        addEntry(new MenuOption("Fill the matrix using concurrent locks."));
+        addEntry(new MenuOption("Fill the matrix using executor service."));
+        addEntry(new MenuOption("Fill the matrix using semaphore."));
+        addEntry(new MenuOption("Save last result. Pattern: path."
                 + " Example: \"6 data\\output.txt\""));
-        addEntry(new MenuEntry("Exit."));
+        addEntry(new MenuOption("Exit."));
     }
 }
