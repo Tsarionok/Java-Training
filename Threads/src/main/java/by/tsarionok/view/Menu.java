@@ -16,7 +16,7 @@ public class Menu {
 
     private Controller controller;
 
-    private List<MenuOption> entries = new ArrayList<>();
+    private List<MenuOption> options = new ArrayList<>();
 
 
     private boolean isExit = false;
@@ -44,8 +44,8 @@ public class Menu {
         }
     }
 
-    private void addEntry(final MenuOption entry) {
-        entries.add(entry);
+    private void addEntry(final MenuOption option) {
+        options.add(option);
     }
 
     private void printMenu() {
@@ -54,11 +54,10 @@ public class Menu {
         builder.append("\nMenu:\n");
         builder.append("Type \"Number_of_the_command pattern\" to run:\n");
 
-        for (int i = 0; i < entries.size(); i++) {
-            MenuOption entry = entries.get(i);
-            String entryFormatted = String.format(
-                    MENU_PATTERN, (i + 1), entry.getTitle());
-            builder.append(entryFormatted);
+        for (int i = 0; i < options.size(); i++) {
+            MenuOption entry = options.get(i);
+            String optionFormatted = String.format(MENU_PATTERN, (i + 1), entry.getTitle());
+            builder.append(optionFormatted);
         }
 
         String menu = builder.toString();
@@ -66,8 +65,7 @@ public class Menu {
     }
 
     private void fillMenu() {
-        addEntry(new MenuOption("Create the matrix. Pattern: path delimiter."
-                + " Example: \"1 data\\input.txt  \""));
+        addEntry(new MenuOption("Create the matrix."));
         addEntry(new MenuOption("Fill the matrix using index distribution."));
         addEntry(new MenuOption("Fill the matrix using concurrent locks."));
         addEntry(new MenuOption("Fill the matrix using executor service."));

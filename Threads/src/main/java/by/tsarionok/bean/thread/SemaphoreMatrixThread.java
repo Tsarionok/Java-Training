@@ -6,36 +6,13 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.concurrent.Semaphore;
 
-/**
- * Class used to write provided values to the 2d array using
- * {@link java.util.concurrent.Semaphore} technology in the separate
- * thread.
- *
- * @author Sergey Tsarionok
- */
 public class SemaphoreMatrixThread extends BasicThread implements Runnable {
 
-    /**
-     * The logger for SemaphoreMatrixThread class.
-     */
     private static final Logger LOGGER = LogManager.getLogger(
             SemaphoreMatrixThread.class);
 
-    /**
-     * The Semaphore instance used by thread to acquire a permit to provided
-     * array.
-     */
     private Semaphore semaphore;
 
-    /**
-     * Constructs the new thread with specific parameters.
-     *
-     * @param idValue        the ID of the thread.
-     * @param nameValue      the name of the thread.
-     * @param arrayValue     the array instance of integers.
-     * @param diagValues     the array instance with diagonal values.
-     * @param semaphoreValue the provided semaphore instance.
-     */
     public SemaphoreMatrixThread(final int idValue, final String nameValue,
                                  final int[][] arrayValue, final int[] diagValues,
                                  final Semaphore semaphoreValue) {
@@ -43,10 +20,6 @@ public class SemaphoreMatrixThread extends BasicThread implements Runnable {
         semaphore = semaphoreValue;
     }
 
-    /**
-     * Finds the "empty" diagonal index in the provided array and sets the
-     * provided value.
-     */
     @Override
     public void run() {
         try {

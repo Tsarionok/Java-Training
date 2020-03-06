@@ -11,22 +11,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- * Data reader realisation. Read file from provided path and proceed to the
- * list of valid strings.
- *
- * @author Sergey Tsarionok
- */
 public class DataReaderImpl implements DataReader {
 
-    /**
-     * Reads the file from given path by lines. Checks lines for incorrect
-     * data.
-     *
-     * @param path to the provided file.
-     * @return the list of strings.
-     * @throws DataHandlerException if error happens during execution.
-     */
     @Override
     public List<String> readFile(final String path) throws
             DataHandlerException {

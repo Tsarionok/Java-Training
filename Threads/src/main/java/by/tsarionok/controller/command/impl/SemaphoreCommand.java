@@ -10,38 +10,15 @@ import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-/**
- * Class describes the semaphore command that invoke appropriate method
- * from Service layer of the application.
- *
- * @author Sergey Tsarionok
- */
 public class SemaphoreCommand implements Command {
 
-    /**
-     * The logger for SemaphoreCommand class.
-     */
     private static final Logger LOGGER = LogManager.getLogger(
             SemaphoreCommand.class);
 
-    /**
-     * The default delimiter.
-     */
     private static final String DEL = " ";
 
-    /**
-     * The appender for response string.
-     */
     private static final String APPENDER = "\n";
 
-    /**
-     * Handles the request parameters and passes its to the Service application
-     * layer.
-     *
-     * @param request the provided string for processing.
-     * @return the result string of correct or incorrect execution of the
-     * command.
-     */
     @Override
     public String execute(final String request) {
 

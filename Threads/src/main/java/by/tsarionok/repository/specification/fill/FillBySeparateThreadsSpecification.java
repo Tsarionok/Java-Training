@@ -3,22 +3,8 @@ package by.tsarionok.repository.specification.fill;
 import by.tsarionok.bean.thread.SimpleMatrixThread;
 import by.tsarionok.repository.specification.Specification;
 
-/**
- * Specification represents the solution  of the task that using the thread
- * distribution by start and end indexes of diagonal vales of provided 2d array.
- *
- * @author Sergey Tsarionok
- */
 public class FillBySeparateThreadsSpecification implements Specification {
 
-    /**
-     * Applies specified criteria to the provided array.
-     *
-     * @param threadNumber the number of active threads.
-     * @param values       the array of provided values for the main diagonal.
-     * @param array        the 2d array with provided integers.
-     * @return the 2d array that correspond to specified criteria.
-     */
     @Override
     public int[][] specified(final int threadNumber, final int[] values,
                              final int[][] array) {

@@ -1,10 +1,5 @@
 package by.tsarionok.controller.command;
 
-/**
- * Enum-class represents the list of commands that exists in the application.
- *
- * @author Sergey Tsarionok
- */
 public enum CommandName {
 
     /**

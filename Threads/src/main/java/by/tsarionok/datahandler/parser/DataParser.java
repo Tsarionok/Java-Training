@@ -7,34 +7,14 @@ import by.tsarionok.service.validator.Validator;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * The class used to parse provided string data to the valid numeric data.
- *
- * @author Sergey Tsarionok
- */
 public class DataParser {
 
-    /**
-     * The validator provides the different types of checks for a given
-     * parameters.
-     */
     private Validator validator;
 
-    /**
-     * Constructs an instance of data parser.
-     */
     public DataParser() {
         validator = new Validator();
     }
 
-    /**
-     * Returns the matrix instance with valid ints from the data string.
-     *
-     * @param data      the list of strings.
-     * @param delimiter the delimiter that splits the string if matches.
-     * @return the list of valid entities.
-     * @throws DataHandlerException if error happens during execution.
-     */
     public Matrix parseData(final List<String> data,
                             final String delimiter) throws DataHandlerException {
 
@@ -56,15 +36,6 @@ public class DataParser {
         }
     }
 
-    /**
-     * Creates the 2d array of integers from list of strings using delimiter.
-     *
-     * @param subList   the list to processing.
-     * @param delimiter the delimiter to split the provided strings from
-     *                  the list.
-     * @return the valid 2d array of integers.
-     * @throws DataHandlerException if error happens during execution.
-     */
     private int[][] getMatrixInts(final List<String> subList,
                                   final String delimiter) throws DataHandlerException {
 
@@ -85,16 +56,6 @@ public class DataParser {
         }
     }
 
-    /**
-     * Check and fill 2d array with valid numbers.
-     *
-     * @param subList   the list to processing.
-     * @param delimiter the delimiter to split the provided strings from
-     *                  the list.
-     * @param n         the valid dimension of array.
-     * @return the valid 2d array of integers.
-     * @throws DataHandlerException if error happens during execution.
-     */
     private int[][] getArr(final List<String> subList, final String delimiter,
                            final int n) throws DataHandlerException {
 
@@ -123,16 +84,6 @@ public class DataParser {
         return arr;
     }
 
-    /**
-     * Returns the valid array of integers used to write to the diagonal
-     * positions of the 2d array.
-     *
-     * @param data      the data list to processing.
-     * @param delimiter the delimiter to split the provided string from
-     *                  the list.
-     * @return the valid array of the diagonal values.
-     * @throws DataHandlerException if error happens during execution.
-     */
     private int[] getDiagInts(final List<String> data,
                               final String delimiter) throws DataHandlerException {
 
@@ -153,13 +104,6 @@ public class DataParser {
         return diagArrInts;
     }
 
-    /**
-     * Returns the valid number of thread used in the application.
-     *
-     * @param data the data list to processing.
-     * @return the valid number of the active thread.
-     * @throws DataHandlerException if error happens during execution.
-     */
     private int getThreadNumber(final List<String> data) throws
             DataHandlerException {
 

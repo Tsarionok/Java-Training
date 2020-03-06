@@ -3,33 +3,12 @@ package by.tsarionok.controller;
 import by.tsarionok.controller.command.Command;
 import by.tsarionok.controller.command.CommandProvider;
 
-/**
- * Class represents the Controller layer of the application. Created to manage
- * requests from user, invoke the commands and return the results from Service
- * layer ot the application.
- *
- * @author Sergey Tsarionok
- */
 public class Controller {
 
-    /**
-     * The default delimiter.
-     */
     private static final String DEL = " ";
-    /**
-     * The class gives an access to supported commands.
-     */
+
     private final CommandProvider provider = new CommandProvider();
 
-    /**
-     * Returns the result string value of executed command. The method takes
-     * first token before the {@link Controller#DEL} if exists and
-     * get an appropriate command from {@link Controller#provider} repository.
-     *
-     * @param request the initial request that contains the data
-     *                for processing.
-     * @return the result response of the found command.
-     */
     public String executeTask(final String request) {
         String commandName;
         Command executionCommand;

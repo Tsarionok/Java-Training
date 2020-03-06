@@ -10,20 +10,8 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-/**
- * Data writer realisation. Write data to provided file.
- *
- * @author Sergey Tsarionok
- */
 public class DataWriterImpl implements DataWriter {
 
-    /**
-     * Writes the provided array of ints to the file.
-     *
-     * @param array the provided array of ints.
-     * @param path  the path to file.
-     * @throws DataHandlerException if error happens during execution.
-     */
     @Override
     public void writeFile(final int[][] array, final String path) throws
             DataHandlerException {

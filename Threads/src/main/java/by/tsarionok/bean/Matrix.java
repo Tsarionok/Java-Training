@@ -1,54 +1,21 @@
 package by.tsarionok.bean;
 
-/**
- * Class used to store data about thread number, values of every thread that
- * it must puts to the main diagonal and 2d array of integers to processing.
- *
- * @author Sergey Tsarionok
- */
 public final class Matrix {
 
-    /**
-     * The lazy initialisation of matrix singleton instance.
-     */
     private static Matrix instance = null;
 
-    /**
-     * Contains the multi-array of int values.
-     */
     private int[][] arr;
 
-    /**
-     * Contains the number of active threads.
-     */
     private int threadNumber;
 
-    /**
-     * Contains an array of diagonal values.
-     */
     private int[] diagValues;
 
-    /**
-     * Constructs the square matrix instance.
-     *
-     * @param thread the number of active threads.
-     * @param values the array of diagonal values.
-     * @param ints   the row and column values.
-     */
     private Matrix(final int thread, final int[] values, final int[][] ints) {
         threadNumber = thread;
         diagValues = values;
         arr = ints;
     }
 
-    /**
-     * The global method used to create only one synchronised matrix instance.
-     *
-     * @param thread the number of active threads.
-     * @param values the array of diagonal values.
-     * @param ints   the row and column values.
-     * @return the matrix instance.
-     */
     public static synchronized Matrix getInstance(final int thread,
                                                   final int[] values, final int[][] ints) {
 
