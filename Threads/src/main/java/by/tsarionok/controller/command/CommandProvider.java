@@ -5,21 +5,10 @@ import by.tsarionok.controller.command.impl.*;
 import java.util.EnumMap;
 import java.util.Map;
 
-/**
- * Class used to store and determine the different kind of commands.
- *
- * @author Sergey Tsarionok
- */
 public class CommandProvider {
 
-    /**
-     * The map contains the list of supported commands and its values.
-     */
     private final Map<CommandName, Command> repository = new EnumMap<>(CommandName.class);
 
-    /**
-     * Creates and fills the repository of supported commands.
-     */
     public CommandProvider() {
         repository.put(CommandName.CREATE_MATRIX, new CreateMatrixCommand());
         repository.put(CommandName.THREAD_DISTRIBUTION, new ThreadDistributionCommand());
@@ -31,13 +20,6 @@ public class CommandProvider {
         repository.put(CommandName.WRONG_REQUEST, new WrongRequestCommand());
     }
 
-    /**
-     * Returns the command instance for which the specified code is mapped
-     * in the repository.
-     *
-     * @param code the code whose associated value is to be returned.
-     * @return the command instance.
-     */
     public Command getCommand(final String code) {
         Command command;
 
