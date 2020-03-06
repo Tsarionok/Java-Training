@@ -1,4 +1,4 @@
-package by.tsarionok.model;
+package by.tsarionok.entity;
 
 public enum LexemeType {
     SYMBOL("\\S"),

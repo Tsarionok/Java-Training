@@ -1,4 +1,4 @@
-package by.tsarionok.model;
+package by.tsarionok.entity;
 
 public class Lexeme implements Comparable<Lexeme> {
     private String content;

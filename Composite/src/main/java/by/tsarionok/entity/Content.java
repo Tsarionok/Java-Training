@@ -1,4 +1,4 @@
-package by.tsarionok.model;
+package by.tsarionok.entity;
 
 import java.util.List;
 import java.util.Map;

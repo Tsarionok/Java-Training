@@ -1,9 +1,9 @@
 package by.tsarionok;
 
-import by.tsarionok.model.Content;
-import by.tsarionok.model.Lexeme;
-import by.tsarionok.model.LexemeType;
-import by.tsarionok.processor.*;
+import by.tsarionok.entity.Content;
+import by.tsarionok.entity.Lexeme;
+import by.tsarionok.entity.LexemeType;
+import by.tsarionok.service.*;
 import org.apache.log4j.Logger;
 
 import java.io.*;

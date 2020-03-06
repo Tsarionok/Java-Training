@@ -1,6 +1,6 @@
-package by.tsarionok.processor;
+package by.tsarionok.service;
 
-import by.tsarionok.model.LexemeType;
+import by.tsarionok.entity.LexemeType;
 
 public class ParagraphProcessor extends Processor {
 
