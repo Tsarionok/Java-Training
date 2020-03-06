@@ -1,19 +1,11 @@
 package by.tsarionok.repository;
 
 import by.tsarionok.repository.exception.RepositoryException;
-import by.tsarionok.repository.specification.Specification;
+import by.tsarionok.service.specification.Specification;
 
-
-/**
- * Interface used to describe the common structure of the different types of
- * repositories.
- *
- * @author Sergey Tsarionok
- */
 public interface Repository {
 
-    void createMatrix(String path, String delimiter) throws
-            RepositoryException;
+    void createMatrix(String path, String delimiter) throws RepositoryException;
 
     int[][] query(Specification specification) throws RepositoryException;
 

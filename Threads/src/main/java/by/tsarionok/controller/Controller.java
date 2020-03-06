@@ -16,10 +16,8 @@ public class Controller {
         String params = "";
 
         if (request.contains(DEL)) {
-            commandName = request.substring(
-                    0, request.indexOf(DEL));
-            params = request.substring(request.indexOf(DEL) + 1)
-                    .toLowerCase();
+            commandName = request.substring(0, request.indexOf(DEL));
+            params = request.substring(request.indexOf(DEL) + 1).toLowerCase();
         } else {
             commandName = request;
         }

@@ -8,7 +8,7 @@ import by.tsarionok.datahandler.factory.DataHandlerFactory;
 import by.tsarionok.datahandler.parser.DataParser;
 import by.tsarionok.repository.Repository;
 import by.tsarionok.repository.exception.RepositoryException;
-import by.tsarionok.repository.specification.Specification;
+import by.tsarionok.service.specification.Specification;
 
 public class MatrixRepository implements Repository {
 

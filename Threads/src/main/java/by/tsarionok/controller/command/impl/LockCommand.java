@@ -34,10 +34,8 @@ public class LockCommand implements Command {
             response.append(Arrays.stream(array)
                     .map(s -> Arrays.stream(s)
                             .mapToObj(String::valueOf)
-                            .collect(Collectors
-                                    .joining(DEL)))
-                    .collect(Collectors.joining(
-                            System.lineSeparator())));
+                            .collect(Collectors.joining(DEL)))
+                    .collect(Collectors.joining(System.lineSeparator())));
         } catch (ServiceException e) {
             response.append(e.getMessage());
             LOGGER.error(response);

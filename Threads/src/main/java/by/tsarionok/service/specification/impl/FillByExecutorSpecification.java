@@ -1,7 +1,7 @@
-package by.tsarionok.repository.specification.fill;
+package by.tsarionok.service.specification.impl;
 
 import by.tsarionok.bean.thread.ExecutorMatrixThread;
-import by.tsarionok.repository.specification.Specification;
+import by.tsarionok.service.specification.Specification;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

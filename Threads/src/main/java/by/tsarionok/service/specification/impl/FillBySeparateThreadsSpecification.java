@@ -1,13 +1,12 @@
-package by.tsarionok.repository.specification.fill;
+package by.tsarionok.service.specification.impl;
 
 import by.tsarionok.bean.thread.SimpleMatrixThread;
-import by.tsarionok.repository.specification.Specification;
+import by.tsarionok.service.specification.Specification;
 
 public class FillBySeparateThreadsSpecification implements Specification {
 
     @Override
-    public int[][] specified(final int threadNumber, final int[] values,
-                             final int[][] array) {
+    public int[][] specified(final int threadNumber, final int[] values, final int[][] array) {
 
         int[][] copy = getCopy(array);
 
@@ -25,9 +24,7 @@ public class FillBySeparateThreadsSpecification implements Specification {
                 currentCount = count;
             }
             int end = start + currentCount - 1;
-            threads[i] = new Thread(
-                    new SimpleMatrixThread(i, "IndexThread", copy,
-                            values, start, end));
+            threads[i] = new Thread(new SimpleMatrixThread(i, "IndexThread", copy, values, start, end));
             start = start + currentCount;
             threads[i].start();
         }

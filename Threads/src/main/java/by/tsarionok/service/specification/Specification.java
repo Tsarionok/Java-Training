@@ -1,4 +1,4 @@
-package by.tsarionok.repository.specification;
+package by.tsarionok.service.specification;
 
 import java.util.Arrays;
 
