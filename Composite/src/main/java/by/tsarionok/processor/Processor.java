@@ -14,12 +14,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Processor {
-    private static final Logger LOGGER = Logger.getLogger(Main.class.getSimpleName());
     private Processor nextProcessor;
     private LexemeType type;
     private String patternString;
     private Pattern pattern;
     private Matcher matcher;
+    private static final Logger LOGGER = Logger.getLogger(Main.class.getSimpleName());
 
 
     public Processor(LexemeType type) {
