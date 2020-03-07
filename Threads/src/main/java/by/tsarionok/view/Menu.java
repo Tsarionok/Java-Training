@@ -31,7 +31,7 @@ public class Menu {
         while (!isExit) {
             printMenu();
             Scanner scanner = new Scanner(System.in);
-            scanner.useDelimiter("\\Z");
+            //scanner.useDelimiter("\\Z");
             String query = scanner.nextLine();
 
             if (!query.isEmpty() && (query.startsWith("7"))) {
@@ -70,8 +70,7 @@ public class Menu {
         addEntry(new MenuOption("Fill the matrix using concurrent locks."));
         addEntry(new MenuOption("Fill the matrix using executor service."));
         addEntry(new MenuOption("Fill the matrix using semaphore."));
-        addEntry(new MenuOption("Save last result. Pattern: path."
-                + " Example: \"6 data\\output.txt\""));
+        addEntry(new MenuOption("Save result."));
         addEntry(new MenuOption("Exit."));
     }
 }

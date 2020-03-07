@@ -1,38 +1,37 @@
 package by.tsarionok.service.impl;
 
-import by.tsarionok.repository.Repository;
-import by.tsarionok.repository.exception.RepositoryException;
-import by.tsarionok.repository.factory.RepositoryFactory;
+import by.tsarionok.dao.Dao;
+import by.tsarionok.dao.exception.DaoException;
+import by.tsarionok.dao.factory.DaoFactory;
 import by.tsarionok.service.MatrixService;
 import by.tsarionok.service.exception.ServiceException;
-import by.tsarionok.service.specification.impl.FillByExecutorSpecification;
-import by.tsarionok.service.specification.impl.FillByLockSpecification;
-import by.tsarionok.service.specification.impl.FillBySemaphoreSpecification;
-import by.tsarionok.service.specification.impl.FillBySeparateThreadsSpecification;
+import by.tsarionok.service.filler.impl.FillByExecutorVariant;
+import by.tsarionok.service.filler.impl.FillByLockVariant;
+import by.tsarionok.service.filler.impl.FillBySemaphoreVariant;
+import by.tsarionok.service.filler.impl.FillBySeparateThreadsVariant;
 import by.tsarionok.service.validator.Validator;
 
 public class MatrixServiceImpl implements MatrixService {
 
-    private Repository matrixRepository;
+    private Dao matrixDao;
 
     private Validator validator;
 
     public MatrixServiceImpl() {
-        RepositoryFactory factory = RepositoryFactory.getInstance();
-        matrixRepository = factory.getMatrixRepository();
+        DaoFactory factory = DaoFactory.getInstance();
+        matrixDao = factory.getMatrixDao();
         validator = new Validator();
     }
 
     @Override
-    public void createMatrix(final String path, final String delimiter) throws
-            ServiceException {
+    public void createMatrix(final String path, final String delimiter) throws ServiceException {
         try {
             if (!validator.isValidValue(path)) {
                 throw new ServiceException("The parameters for creating matrix are not valid");
             } else {
-                matrixRepository.createMatrix(path, delimiter);
+                matrixDao.createMatrix(path, delimiter);
             }
-        } catch (RepositoryException e) {
+        } catch (DaoException e) {
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -40,8 +39,8 @@ public class MatrixServiceImpl implements MatrixService {
     @Override
     public int[][] fillBySeparateThreads() throws ServiceException {
         try {
-            return matrixRepository.query(new FillBySeparateThreadsSpecification());
-        } catch (RepositoryException e) {
+            return matrixDao.query(new FillBySeparateThreadsVariant());
+        } catch (DaoException e) {
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -49,9 +48,9 @@ public class MatrixServiceImpl implements MatrixService {
     @Override
     public int[][] fillByLocks() throws ServiceException {
         try {
-            return matrixRepository
-                    .query(new FillByLockSpecification());
-        } catch (RepositoryException e) {
+            return matrixDao
+                    .query(new FillByLockVariant());
+        } catch (DaoException e) {
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -59,8 +58,8 @@ public class MatrixServiceImpl implements MatrixService {
     @Override
     public int[][] fillByExecutorService() throws ServiceException {
         try {
-            return matrixRepository.query(new FillByExecutorSpecification());
-        } catch (RepositoryException e) {
+            return matrixDao.query(new FillByExecutorVariant());
+        } catch (DaoException e) {
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -68,9 +67,8 @@ public class MatrixServiceImpl implements MatrixService {
     @Override
     public int[][] fillBySemaphore() throws ServiceException {
         try {
-            return matrixRepository
-                    .query(new FillBySemaphoreSpecification());
-        } catch (RepositoryException e) {
+            return matrixDao.query(new FillBySemaphoreVariant());
+        } catch (DaoException e) {
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -79,12 +77,11 @@ public class MatrixServiceImpl implements MatrixService {
     public void saveLastResult(final String path) throws ServiceException {
         try {
             if (!validator.isValidValue(path)) {
-                throw new ServiceException("The parameters for saving  are "
-                        + "not valid");
+                throw new ServiceException("The parameters for saving  are not valid");
             } else {
-                matrixRepository.saveLastResult(path);
+                matrixDao.saveLastResult(path);
             }
-        } catch (RepositoryException e) {
+        } catch (DaoException e) {
             throw new ServiceException(e.getMessage(), e);
         }
     }

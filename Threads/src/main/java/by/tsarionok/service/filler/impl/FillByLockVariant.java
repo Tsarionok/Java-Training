@@ -1,16 +1,15 @@
-package by.tsarionok.service.specification.impl;
+package by.tsarionok.service.filler.impl;
 
-import by.tsarionok.bean.thread.LockMatrixThread;
-import by.tsarionok.service.specification.Specification;
+import by.tsarionok.entity.thread.LockMatrixThread;
+import by.tsarionok.service.filler.Variant;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class FillByLockSpecification implements Specification {
+public class FillByLockVariant implements Variant {
 
     @Override
-    public int[][] specified(final int threadNumber, final int[] values,
-                             final int[][] array) {
+    public int[][] variant(final int threadNumber, final int[] values, final int[][] array) {
 
         int[][] copy = getCopy(array);
 

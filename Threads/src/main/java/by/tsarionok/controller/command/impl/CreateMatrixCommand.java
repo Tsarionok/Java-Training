@@ -10,8 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 public class CreateMatrixCommand implements Command {
 
-    private static final Logger LOGGER = LogManager.getLogger(
-            CreateMatrixCommand.class);
+    private static final Logger LOGGER = LogManager.getLogger(CreateMatrixCommand.class);
 
     private static final String DEL = " ";
 
@@ -32,8 +31,7 @@ public class CreateMatrixCommand implements Command {
         } else {
             try {
                 matrixService.createMatrix(args[0], args[1]);
-                response = MessageManager.getProperty(
-                        "message.matrix.create.correct");
+                response = MessageManager.getProperty("message.matrix.create.correct");
             } catch (ServiceException e) {
                 response = e.getMessage();
                 LOGGER.error(response);

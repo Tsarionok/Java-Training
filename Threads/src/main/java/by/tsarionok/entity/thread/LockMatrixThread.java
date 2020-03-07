@@ -1,6 +1,6 @@
-package by.tsarionok.bean.thread;
+package by.tsarionok.entity.thread;
 
-import by.tsarionok.bean.BasicThread;
+import by.tsarionok.entity.BasicThread;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

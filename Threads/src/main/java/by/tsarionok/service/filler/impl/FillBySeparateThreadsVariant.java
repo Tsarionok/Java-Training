@@ -1,12 +1,12 @@
-package by.tsarionok.service.specification.impl;
+package by.tsarionok.service.filler.impl;
 
-import by.tsarionok.bean.thread.SimpleMatrixThread;
-import by.tsarionok.service.specification.Specification;
+import by.tsarionok.entity.thread.SimpleMatrixThread;
+import by.tsarionok.service.filler.Variant;
 
-public class FillBySeparateThreadsSpecification implements Specification {
+public class FillBySeparateThreadsVariant implements Variant {
 
     @Override
-    public int[][] specified(final int threadNumber, final int[] values, final int[][] array) {
+    public int[][] variant(final int threadNumber, final int[] values, final int[][] array) {
 
         int[][] copy = getCopy(array);
 

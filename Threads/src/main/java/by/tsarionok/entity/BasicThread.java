@@ -1,4 +1,4 @@
-package by.tsarionok.bean;
+package by.tsarionok.entity;
 
 public abstract class BasicThread {
 

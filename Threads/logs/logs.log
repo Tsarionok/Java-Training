@@ -1,0 +1,17 @@
+[ERROR] 2020-03-07 13:53:32.513 [main] CreateMatrixCommand - The diagonal values in the file are invalid:  
+[ERROR] 2020-03-07 13:54:02.417 [main] CreateMatrixCommand - The diagonal values in the file are invalid:  
+[ERROR] 2020-03-07 13:55:20.205 [main] CreateMatrixCommand - The diagonal values in the file are invalid:  
+[ERROR] 2020-03-07 14:00:58.913 [main] CreateMatrixCommand - The thread number in the file contains invalid data: 0 34 84 10 44 25 61 63 10
+[ERROR] 2020-03-07 14:01:36.071 [main] CreateMatrixCommand - The thread number in the file contains invalid data: 0 34 84 10 44 25 61 63 10
+[ERROR] 2020-03-07 14:02:14.181 [main] CreateMatrixCommand - The thread number in the file contains invalid data: 0 34 84 10 44 25 61 63 10
+[ERROR] 2020-03-07 14:04:54.697 [main] CreateMatrixCommand - The thread number in the file contains invalid data: 0 34 84 11 44 25 61 63 10
+[ERROR] 2020-03-07 14:05:16.918 [main] CreateMatrixCommand - The thread number in the file contains invalid data: 0 34 84 11 44 25 61 63 10
+[ERROR] 2020-03-07 14:05:39.111 [main] CreateMatrixCommand - The thread number in the file contains invalid data: 0 34 84 11 44 25 61 63 10
+[ERROR] 2020-03-07 14:05:50.197 [main] CreateMatrixCommand - The thread number in the file contains invalid data: 0 34 84 11 44 25 61 63 10
+[ERROR] 2020-03-07 14:06:18.953 [main] CreateMatrixCommand - The thread number in the file contains invalid data: 0 34 84 11 44 25 61 63 10
+[ERROR] 2020-03-07 14:07:07.377 [main] CreateMatrixCommand - The thread number in the file contains invalid data: 0 34 84 11 44 25 61 63 10
+[ERROR] 2020-03-07 14:07:28.833 [main] CreateMatrixCommand - The thread number in the file contains invalid data: 0 11 12 13 14 55 66 77 88 99
+[ERROR] 2020-03-07 14:07:59.561 [main] CreateMatrixCommand - The thread number in the file contains invalid data: 0 11 12 13 14 55 66 77 88 99
+[ERROR] 2020-03-07 14:08:48.205 [main] ThreadDistributionCommand - Error during query execution! The matrix parameters does not exist!
+[ERROR] 2020-03-07 14:09:02.005 [main] CreateMatrixCommand - The thread number in the file contains invalid data: 0 11 12 13 14 55 66 77 88 99
+[ERROR] 2020-03-07 14:21:41.763 [main] CreateMatrixCommand - The thread number in the file contains invalid data: 0 34 84 13 14 55 66 77 88 99

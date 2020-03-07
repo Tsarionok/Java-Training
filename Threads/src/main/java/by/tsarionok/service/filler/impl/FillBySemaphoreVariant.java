@@ -1,18 +1,18 @@
-package by.tsarionok.service.specification.impl;
+package by.tsarionok.service.filler.impl;
 
-import by.tsarionok.bean.thread.SemaphoreMatrixThread;
-import by.tsarionok.service.specification.Specification;
+import by.tsarionok.entity.thread.SemaphoreMatrixThread;
+import by.tsarionok.service.filler.Variant;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
-public class FillBySemaphoreSpecification implements Specification {
+public class FillBySemaphoreVariant implements Variant {
 
     private static final int TIMEOUT = 500;
 
     @Override
-    public int[][] specified(final int threadNumber, final int[] values,
-                             final int[][] array) {
+    public int[][] variant(final int threadNumber, final int[] values,
+                           final int[][] array) {
 
         int permitNumber = array.length / threadNumber + 1;
         Semaphore semaphore = new Semaphore(permitNumber, true);
@@ -25,9 +25,7 @@ public class FillBySemaphoreSpecification implements Specification {
             if (currentID == threadNumber) {
                 currentID = 0;
             }
-            new Thread(new SemaphoreMatrixThread(currentID, "SemaphoreThread",
-                    copy, values,
-                    semaphore)).start();
+            new Thread(new SemaphoreMatrixThread(currentID, "SemaphoreThread", copy, values, semaphore)).start();
         }
 
         try {

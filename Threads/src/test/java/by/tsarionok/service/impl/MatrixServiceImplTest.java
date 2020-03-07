@@ -42,8 +42,6 @@ public class MatrixServiceImplTest {
 
         Object[][] data = null;
 
-        //didn't work with "data" in the folder name, it's trying to get 
-        //files from "matrix/data" folder instead
         try (Stream<Path> paths = Files.walk(
                 Paths.get("src", "test", "resources"))) {
 

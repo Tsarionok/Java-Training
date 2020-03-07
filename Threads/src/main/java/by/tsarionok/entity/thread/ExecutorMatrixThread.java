@@ -1,6 +1,6 @@
-package by.tsarionok.bean.thread;
+package by.tsarionok.entity.thread;
 
-import by.tsarionok.bean.BasicThread;
+import by.tsarionok.entity.BasicThread;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,8 +18,7 @@ public class ExecutorMatrixThread extends BasicThread implements Runnable {
 
     private int end;
 
-    public ExecutorMatrixThread(final int idValue, final String nameValue,
-                                final int[][] arrayValue, final int[] diagValues) {
+    public ExecutorMatrixThread(final int idValue, final String nameValue, final int[][] arrayValue, final int[] diagValues) {
         super(idValue, nameValue, arrayValue, diagValues);
         perform();
     }

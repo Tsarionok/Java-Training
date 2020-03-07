@@ -1,7 +1,7 @@
 package by.tsarionok.datahandler.parser;
 
-import by.tsarionok.bean.Matrix;
 import by.tsarionok.datahandler.exception.DataHandlerException;
+import by.tsarionok.entity.Matrix;
 import by.tsarionok.service.validator.Validator;
 
 import java.util.Arrays;

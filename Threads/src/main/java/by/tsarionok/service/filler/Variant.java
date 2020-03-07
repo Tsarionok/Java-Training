@@ -1,10 +1,10 @@
-package by.tsarionok.service.specification;
+package by.tsarionok.service.filler;
 
 import java.util.Arrays;
 
-public interface Specification {
+public interface Variant {
 
-    int[][] specified(int threadNumber, int[] values, int[][] array);
+    int[][] variant(int threadNumber, int[] values, int[][] array);
 
     default int[][] getCopy(int[][] array) {
         return Arrays.stream(array)

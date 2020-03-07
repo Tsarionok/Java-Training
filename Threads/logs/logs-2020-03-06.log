@@ -1,0 +1,6 @@
+[ERROR] 2020-03-06 17:09:09.336 [main] ThreadDistributionCommand - Error during query execution! The matrix parameters does not exist!
+[ERROR] 2020-03-06 17:11:53.979 [main] LockCommand - Error during query execution! The matrix parameters does not exist!
+[ERROR] 2020-03-06 17:16:34.450 [main] LockCommand - Error during query execution! The matrix parameters does not exist!
+[ERROR] 2020-03-06 18:11:08.915 [main] LockCommand - Error during query execution! The matrix parameters does not exist!
+[ERROR] 2020-03-06 18:11:59.154 [main] CreateMatrixCommand - Error during reading the file.
+[ERROR] 2020-03-06 18:18:56.426 [main] ThreadDistributionCommand - Error during query execution! The matrix parameters does not exist!
