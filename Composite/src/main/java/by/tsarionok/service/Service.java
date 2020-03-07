@@ -1,4 +1,4 @@
-package by.tsarionok.controller;
+package by.tsarionok.service;
 
 import by.tsarionok.Main;
 import by.tsarionok.entity.Content;
@@ -13,8 +13,8 @@ import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Controller {
-    private Controller nextController;
+public class Service {
+    private Service nextService;
     private LexemeType type;
     private String patternString;
     private Pattern pattern;
@@ -22,7 +22,7 @@ public class Controller {
     private static final Logger LOGGER = Logger.getLogger(Main.class.getSimpleName());
 
 
-    public Controller(LexemeType type) {
+    public Service(LexemeType type) {
         this.type = type;
         this.patternString = type.getPattern();
         this.pattern = Pattern.compile(patternString);
@@ -32,9 +32,9 @@ public class Controller {
         return type;
     }
 
-    public Controller nextProcessor(Controller controller) {
-        this.nextController = controller;
-        return controller;
+    public Service nextProcessor(Service service) {
+        this.nextService = service;
+        return service;
     }
 
     public Map<Lexeme, List<Lexeme>> processContent(Content content, LexemeType prevTypeToProcess) {
@@ -67,8 +67,8 @@ public class Controller {
     }
 
     protected void processNext(Content content, LexemeType type) {
-        if (nextController != null) {
-            nextController.processContent(content, type);
+        if (nextService != null) {
+            nextService.processContent(content, type);
         }
     }
 }

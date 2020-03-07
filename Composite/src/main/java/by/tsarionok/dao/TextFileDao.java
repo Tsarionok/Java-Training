@@ -1,10 +1,10 @@
 package by.tsarionok.dao;
 
 import by.tsarionok.Main;
-import by.tsarionok.controller.*;
 import by.tsarionok.entity.Content;
 import by.tsarionok.entity.Lexeme;
 import by.tsarionok.entity.LexemeType;
+import by.tsarionok.service.*;
 import org.apache.log4j.Logger;
 
 import java.io.*;
@@ -42,14 +42,14 @@ public class TextFileDao {
             e.printStackTrace();
             LOGGER.error("Error with content line reading from file: " + e.getMessage());
         }
-        Controller controller = new ArticleController();
-        controller.nextProcessor(new ParagraphController()).nextProcessor(new SentenceController())
-                .nextProcessor(new WordController()).nextProcessor(new SymbolController());
+        Service service = new ArticleService();
+        service.nextProcessor(new ParagraphService()).nextProcessor(new SentenceService())
+                .nextProcessor(new WordService()).nextProcessor(new SymbolService());
         List<Lexeme> articleList = new ArrayList<>();
         articleList.add(new Lexeme(textBuilder.toString()));
         Content content = new Content();
         content.setLexemes(LexemeType.ARTICLE, articleList);
-        controller.processContent(content, LexemeType.ARTICLE);
+        service.processContent(content, LexemeType.ARTICLE);
         return content;
     }
 }
