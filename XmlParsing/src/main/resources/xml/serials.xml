@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://by.training.serials"
+          xsi:schemaLocation="http://by.training.serials serials.xsd">
+    <user id="f1">
+        <login>admin</login>
+        <password>admin</password>
+        <email>admin@gmail.com</email>
+        <phone-num>808005553535</phone-num>
+        <birth-date>1992-03-12</birth-date>
+    </user>
+    <serial id="w2">
+        <name>Sherlock</name>
+        <premiere-date>2010-01-01</premiere-date>
+        <image_path>sher.png</image_path>
+        <description>some description</description>
+        <country>GB</country>
+        <category>Detective</category>
+    </serial>
+</entities>
