@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xmlns="http://by.training.serials"
-          xsi:schemaLocation="http://by.training.serials serials.xsd">
-    <user id="f1">
+          xmlns="http://www.training.by/serials"
+          xsi:schemaLocation="http://www.training.by/serials serials.xsd">
+    <user role="0">
+        <id>0</id>
         <login>admin</login>
         <password>admin</password>
-        <email>admin@gmail.com</email>
-        <phone-num>808005553535</phone-num>
-        <birth-date>1992-03-12</birth-date>
+        <user-info>
+            <phone-num>808005553535</phone-num>
+            <birth-date>1990-10-11</birth-date>
+            <sex>man</sex>
+        </user-info>
     </user>
-    <serial id="w2">
-        <name>Sherlock</name>
-        <premiere-date>2010-01-01</premiere-date>
-        <image_path>sher.png</image_path>
-        <description>some description</description>
-        <country>GB</country>
-        <category>Detective</category>
+
+    <serial>
+        <id>0</id>
+        <name>Сверхъестественное</name>
+        <premiere-date>2005-09-13</premiere-date>
+        <image_path>supernatural.png</image_path>
+        <description>
+            Сверхъестественное — мистический сериал, который рассказывает о братьях-охотниках,
+            вынужденных истреблять разного рода нечисть в виде демонов, призраков, вампиров и оборотней.
+            Сэм и Дин Винчестеры путешествуют по Америке на легендарной Chevrolet Impala 1967 года,
+            а явления, с которыми сталкиваются братья, основаны на реальных городских легендах и фольклоре.
+        </description>
+        <country>США</country>
+        <category>Фэнтези</category>
     </serial>
 </entities>
