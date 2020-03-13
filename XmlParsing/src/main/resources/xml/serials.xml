@@ -2,7 +2,7 @@
 <entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xmlns="http://www.training.by/serials"
           xsi:schemaLocation="http://www.training.by/serials serials.xsd">
-    <user role="0">
+    <user>
         <id>0</id>
         <login>admin</login>
         <password>admin</password>

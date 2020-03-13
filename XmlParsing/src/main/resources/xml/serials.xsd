@@ -30,7 +30,7 @@
           <element name="password" type="string"/>
           <element name="user-info" type="tns:UserInfo"/>
         </sequence>
-        <attribute name="role" type="int" use="required">
+        <attribute name="role" use="required">
           <simpleType>
             <restriction base="int">
               <enumeration value="0"></enumeration>
@@ -45,9 +45,9 @@
 
   <complexType name="UserInfo">
     <sequence>
-      <element name="phone-num" type="positiveInteger" default="not specified"/>
-      <element name="birth-date" type="date" default="not specified"/>
-      <element name="sex" type="string">
+      <element name="phone-num" type="positiveInteger"/>
+      <element name="birth-date" type="date"/>
+      <element name="sex">
         <simpleType>
           <restriction base="string">
             <enumeration value="man"></enumeration>
