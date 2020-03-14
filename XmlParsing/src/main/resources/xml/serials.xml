@@ -2,7 +2,7 @@
 <entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xmlns="http://www.training.by/serials"
           xsi:schemaLocation="http://www.training.by/serials serials.xsd">
-    <user>
+    <user role="1">
         <id>0</id>
         <login>admin</login>
         <password>admin</password>
@@ -14,7 +14,7 @@
     </user>
 
     <serial>
-        <id>0</id>
+        <id>2</id>
         <name>Сверхъестественное</name>
         <premiere-date>2005-09-13</premiere-date>
         <image_path>supernatural.png</image_path>
@@ -27,4 +27,15 @@
         <country>США</country>
         <category>Фэнтези</category>
     </serial>
+
+    <user role="2">
+        <id>104</id>
+        <login>someUser</login>
+        <password>pass1234</password>
+        <user-info>
+            <phone-num>80332220456</phone-num>
+            <birth-date>1995-04-06</birth-date>
+            <sex>woman</sex>
+        </user-info>
+    </user>
 </entities>

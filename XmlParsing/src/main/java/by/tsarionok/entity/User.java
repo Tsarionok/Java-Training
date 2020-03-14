@@ -1,29 +1,22 @@
 package by.tsarionok.entity;
 
-import java.util.Date;
 import java.util.Objects;
 
 public class User extends Entity {
     private String login;
     private String password;
-    private int role;
-    private String email;
-    private String sex;
-    private Date birthDate;
-    private String phoneNumber;
+    private Integer role;
+    private UserInfo info;
 
     public User() {
     }
 
-    public User(long id, String login, String password, int role, String email, String sex, Date birthDate, String phoneNumber) {
+    public User(long id, String login, String password, int role, UserInfo info) {
         super(id);
         this.login = login;
         this.password = password;
         this.role = role;
-        this.email = email;
-        this.sex = sex;
-        this.birthDate = birthDate;
-        this.phoneNumber = phoneNumber;
+        this.info = info;
     }
 
     public String getLogin() {
@@ -50,36 +43,12 @@ public class User extends Entity {
         this.role = role;
     }
 
-    public String getEmail() {
-        return email;
+    public UserInfo getInfo() {
+        return info;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setInfo(UserInfo info) {
+        this.info = info;
     }
 
     @Override
@@ -91,27 +60,22 @@ public class User extends Entity {
         return role == user.role &&
                 Objects.equals(login, user.login) &&
                 Objects.equals(password, user.password) &&
-                Objects.equals(email, user.email) &&
-                Objects.equals(sex, user.sex) &&
-                Objects.equals(birthDate, user.birthDate) &&
-                Objects.equals(phoneNumber, user.phoneNumber);
+                Objects.equals(info, user.info);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), login, password, role, email, sex, birthDate, phoneNumber);
+        return Objects.hash(super.hashCode(), login, password, role, info);
     }
 
     @Override
     public String toString() {
         return "User{" +
+                super.toString() +
                 "login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
-                ", email='" + email + '\'' +
-                ", sex='" + sex + '\'' +
-                ", birthDate=" + birthDate +
-                ", phoneNumber='" + phoneNumber + '\'' +
+                ", info=" + info +
                 '}';
     }
 }

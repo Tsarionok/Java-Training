@@ -3,7 +3,7 @@ package by.tsarionok.entity;
 import java.util.Objects;
 
 public abstract class Entity {
-    private long id;
+    private Long id;
 
     public Entity() {
     }

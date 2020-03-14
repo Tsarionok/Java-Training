@@ -1,13 +1,13 @@
 package by.tsarionok;
 
+import by.tsarionok.entity.Entity;
 import by.tsarionok.service.impl.DomParserImpl;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.xml.XMLConstants;
+import java.util.List;
 
 public class Runner {
-    private static final Logger LOGGER = LogManager.getLogger(Runner.class);
+    //private static final Logger LOGGER = LogManager.getLogger(Runner.class);
 
     private static final String FILE_PATH = "src/main/resources/xml/serials.xml";
     private static final String SCHEMA_PATH = "xml/serials.xsd";
@@ -15,6 +15,8 @@ public class Runner {
     private static final String LANGUAGE = XMLConstants.W3C_XML_SCHEMA_NS_URI;
 
     public static void main(String[] args) {
+
+
 //        SchemaFactory factory = SchemaFactory.newInstance(LANGUAGE);
 ////        Schema schema = null;
 ////
@@ -42,6 +44,11 @@ public class Runner {
 ////        }
 
         DomParserImpl domParser = new DomParserImpl();
-        domParser.parseDocument();
+        domParser.buildSetEntities();
+        List<Entity> entities = domParser.getEntities();
+        for (Entity entity : entities) {
+            System.out.println(entity);
+        }
     }
 }
+

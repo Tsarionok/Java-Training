@@ -16,18 +16,22 @@ public class XmlDao {
 
     private static final String PATH = "src/main/resources/xml/serials.xml";
 
-    public Document readXmlFile() {
+    private DocumentBuilder documentBuilder;
+
+    public XmlDao() {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = null;
-        Document document = null;
         try {
-            builder = factory.newDocumentBuilder();
+            documentBuilder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
-            LOGGER.error("Parser configuration exception");
+            LOGGER.error("Parser configuration exception" + e);
         }
+    }
+
+    public Document readXmlFile() {
+        Document document = null;
         File file = new File(PATH);
         try {
-            document = builder.parse(file);
+            document = documentBuilder.parse(file);
         } catch (IOException | SAXException e) {
             LOGGER.error("File access exception");
         }

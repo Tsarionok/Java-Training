@@ -1,4 +1,4 @@
 package by.tsarionok.entity;
 
-public class Serial {
+public class Serial extends Entity {
 }
