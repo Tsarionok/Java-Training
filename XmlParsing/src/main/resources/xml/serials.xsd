@@ -63,11 +63,11 @@
       <extension base="tns:Entity">
         <sequence>
           <element name="name" type="string"/>
-          <element name="premiere-date" type="date"/>
+          <element name="premier-date" type="date"/>
           <element name="image_path" type="string"/>
           <element name="description" type="string"/>
           <element name="country" type="string" minOccurs="1" maxOccurs="unbounded"/>
-          <element name="category" type="string"/>
+          <element name="category" type="string" minOccurs="1" maxOccurs="unbounded"/>
         </sequence>
       </extension>
     </complexContent>

@@ -46,7 +46,7 @@ public class DomParserImpl implements Parser {
         NodeList serialNodes = root.getElementsByTagName("serial");
         for (int i = 0; i < serialNodes.getLength(); i++) {
             Element serialElement = (Element) serialNodes.item(i);
-            Serial serial = null;                   // Must be parse method
+            Serial serial = buildSerial(serialElement);                   // Must be parse method
             entities.add(serial);
         }
     }
@@ -58,7 +58,6 @@ public class DomParserImpl implements Parser {
         user.setLogin(getElementContext(element, "login"));
         user.setPassword(getElementContext(element, "password"));
         user.setRole(Integer.parseInt(element.getAttribute("role")));
-        System.out.println("Lol " + element.getFirstChild());
         user.setInfo(buildUserInfo(element));
         return user;
     }
@@ -72,9 +71,35 @@ public class DomParserImpl implements Parser {
         try {
             info.setBirthDate(format.parse(getElementContext(element, "birth-date")));
         } catch (ParseException e) {
-            LOGGER.error("Parse exception. " + e);
+            LOGGER.error("Parse date exception. " + e);
         }
         return info;
+    }
+
+    private Serial buildSerial(final Element element) {
+        Serial serial = new Serial();
+        serial.setName(getElementContext(element, "name"));
+        serial.setDescription(getElementContext(element, "description"));
+        serial.setImgPath(getElementContext(element, "image_path"));
+        NodeList countryNodes = element.getElementsByTagName("country");
+        List<String> countries = new ArrayList<>();
+        for (int i = 0; i < countryNodes.getLength(); i++) {
+            countries.add(countryNodes.item(i).getTextContent());
+        }
+        serial.setCountries(countries);
+        NodeList categoryNodes = element.getElementsByTagName("category");
+        List<String> categories = new ArrayList<>();
+        for (int i = 0; i < categoryNodes.getLength(); i++) {
+            categories.add(categoryNodes.item(i).getTextContent());
+        }
+        serial.setCategories(categories);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            serial.setPremiereDate(format.parse(getElementContext(element, "premier-date")));
+        } catch (ParseException e) {
+            LOGGER.error("Parse date exception. " + e);
+        }
+        return serial;
     }
 
     private String getElementContext(final Element element, final String name) {

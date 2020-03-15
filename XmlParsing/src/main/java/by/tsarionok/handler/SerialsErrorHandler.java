@@ -8,6 +8,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import java.io.IOException;
 
+@Deprecated
 public class SerialsErrorHandler extends DefaultHandler {
     private static final Logger LOGGER = Logger.getLogger("by.tsarionok.handler");
 
