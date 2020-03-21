@@ -18,7 +18,7 @@ public abstract class Parser {
         return entities;
     }
 
-    public void setEntity(Entity entity) {
+    public void addEntity(Entity entity) {
         entities.add(entity);
     }
 }

@@ -3,6 +3,7 @@ package by.tsarionok.entity;
 public enum EntitiesTagEnum {
     ENTITIES("entities"),
     USER("user"),
+    ROLE("role"),
     SERIAL("serial"),
     ID("id"),
     LOGIN("login"),

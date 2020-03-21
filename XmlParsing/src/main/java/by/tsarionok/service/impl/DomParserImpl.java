@@ -34,14 +34,14 @@ public class DomParserImpl extends Parser {
         for (int i = 0; i < userNodes.getLength(); i++) {
             Element userElement = (Element) userNodes.item(i);
             User user = buildUser(userElement);
-            setEntity(user);
+            addEntity(user);
         }
 
         NodeList serialNodes = root.getElementsByTagName("serial");
         for (int i = 0; i < serialNodes.getLength(); i++) {
             Element serialElement = (Element) serialNodes.item(i);
             Serial serial = buildSerial(serialElement);
-            setEntity(serial);
+            addEntity(serial);
         }
     }
 
