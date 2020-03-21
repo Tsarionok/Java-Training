@@ -14,8 +14,6 @@ import java.io.IOException;
 public class XmlDao {
     private static final Logger LOGGER = LogManager.getLogger(XmlDao.class);
 
-    private static final String PATH = "src/main/resources/xml/serials.xml";
-
     private DocumentBuilder documentBuilder;
 
     public XmlDao() {
@@ -27,9 +25,9 @@ public class XmlDao {
         }
     }
 
-    public Document readXmlFile() {
+    public Document readXmlFile(final String filePath) {
         Document document = null;
-        File file = new File(PATH);
+        File file = new File(filePath);
         try {
             document = documentBuilder.parse(file);
         } catch (IOException | SAXException e) {

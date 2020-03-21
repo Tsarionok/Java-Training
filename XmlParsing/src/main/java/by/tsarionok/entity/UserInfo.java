@@ -58,10 +58,10 @@ public class UserInfo {
 
     @Override
     public String toString() {
-        return "UserInfo{" +
+        return "\nUserInfo{\n" +
                 "sex='" + sex + '\'' +
-                ", birthDate=" + birthDate +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
+                ",\nbirthDate=" + birthDate +
+                ",\nphoneNumber='" + phoneNumber + '\'' +
+                "\n}";
     }
 }

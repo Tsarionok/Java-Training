@@ -1,7 +1,9 @@
 package by.tsarionok;
 
+import by.tsarionok.controller.ParseController;
 import by.tsarionok.entity.Entity;
 import by.tsarionok.service.impl.DomParserImpl;
+import by.tsarionok.service.impl.SaxParserImpl;
 
 import javax.xml.XMLConstants;
 import java.util.List;
@@ -12,6 +14,7 @@ public class Runner {
     private static final String FILE_PATH = "src/main/resources/xml/serials.xml";
     private static final String SCHEMA_PATH = "xml/serials.xsd";
     private static final String LOG_PATH = "log/log.txt";
+    private static final String XML_PATH = "src/main/resources/xml/serials.xml";
     private static final String LANGUAGE = XMLConstants.W3C_XML_SCHEMA_NS_URI;
 
     public static void main(String[] args) {
@@ -43,12 +46,17 @@ public class Runner {
 ////            LOGGER.error("Input/output exception");
 ////        }
 
-        DomParserImpl domParser = new DomParserImpl();
-        domParser.buildSetEntities();
-        List<Entity> entities = domParser.getEntities();
-        for (Entity entity : entities) {
-            System.out.println(entity);
-        }
+        ParseController controller = new ParseController();
+
+        List<Entity> entities1 = controller.parseDocument(XML_PATH, new DomParserImpl());
+        System.out.println("DOM parser results:");
+        System.out.println(entities1);
+
+        List<Entity> entities2 = controller.parseDocument(XML_PATH, new SaxParserImpl());
+        System.out.println("SAX parser results:");
+        System.out.println(entities2);
+
+
     }
 }
 

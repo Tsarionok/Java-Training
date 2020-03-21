@@ -1,7 +1,6 @@
 package by.tsarionok.service.impl;
 
 import by.tsarionok.dao.XmlDao;
-import by.tsarionok.entity.Entity;
 import by.tsarionok.entity.Serial;
 import by.tsarionok.entity.User;
 import by.tsarionok.entity.UserInfo;
@@ -18,36 +17,31 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DomParserImpl implements Parser {
+public class DomParserImpl extends Parser {
     private static final Logger LOGGER = LogManager.getLogger(DomParserImpl.class);
 
-    private List<Entity> entities;
-
     public DomParserImpl() {
-        this.entities = new ArrayList<>();
+        super();
     }
 
-    public List<Entity> getEntities() {
-        return entities;
-    }
-
-    public void buildSetEntities() {            //  Filepath should be how a parameter of the 'buildSetEntities()' method
+    @Override
+    public void buildEntities(final String filePath) {
         XmlDao xmlDao = new XmlDao();
-        Document document = xmlDao.readXmlFile();
+        Document document = xmlDao.readXmlFile(filePath);
         Element root = document.getDocumentElement();
 
         NodeList userNodes = root.getElementsByTagName("user");
         for (int i = 0; i < userNodes.getLength(); i++) {
             Element userElement = (Element) userNodes.item(i);
             User user = buildUser(userElement);
-            entities.add(user);
+            setEntity(user);
         }
 
         NodeList serialNodes = root.getElementsByTagName("serial");
         for (int i = 0; i < serialNodes.getLength(); i++) {
             Element serialElement = (Element) serialNodes.item(i);
-            Serial serial = buildSerial(serialElement);                   // Must be parse method
-            entities.add(serial);
+            Serial serial = buildSerial(serialElement);
+            setEntity(serial);
         }
     }
 
@@ -78,9 +72,10 @@ public class DomParserImpl implements Parser {
 
     private Serial buildSerial(final Element element) {
         Serial serial = new Serial();
+        serial.setId(Long.parseLong(getElementContext(element, "id")));
         serial.setName(getElementContext(element, "name"));
         serial.setDescription(getElementContext(element, "description"));
-        serial.setImgPath(getElementContext(element, "image_path"));
+        serial.setImgPath(getElementContext(element, "image-path"));
         NodeList countryNodes = element.getElementsByTagName("country");
         List<String> countries = new ArrayList<>();
         for (int i = 0; i < countryNodes.getLength(); i++) {

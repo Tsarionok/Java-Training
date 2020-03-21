@@ -1,5 +1,6 @@
 package by.tsarionok.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +14,8 @@ public class Serial extends Entity {
     private List<String> categories;
 
     public Serial() {
+        countries = new ArrayList<>();
+        categories = new ArrayList<>();
     }
 
     public Serial(long id, String name, Date premiereDate, String imgPath, String description, List<String> countries, List<String> categories) {
@@ -65,12 +68,20 @@ public class Serial extends Entity {
         this.countries = countries;
     }
 
+    public void setCountry(String country) {
+        countries.add(country);
+    }
+
     public List<String> getCategories() {
         return categories;
     }
 
     public void setCategories(List<String> categories) {
         this.categories = categories;
+    }
+
+    public void setCategory(String category) {
+        categories.add(category);
     }
 
     @Override
@@ -94,13 +105,14 @@ public class Serial extends Entity {
 
     @Override
     public String toString() {
-        return "Serial{" +
-                "name='" + name + '\'' +
-                ", premiereDate=" + premiereDate +
-                ", imgPath='" + imgPath + '\'' +
-                ", description='" + description + '\'' +
-                ", countries=" + countries +
-                ", categories=" + categories +
-                '}';
+        return "\nSerial{\n" +
+                super.toString() +
+                "\nname='" + name + '\'' +
+                ",\npremiereDate=" + premiereDate +
+                ",\nimgPath='" + imgPath + '\'' +
+                ",\ndescription='" + description + '\'' +
+                ",\ncountries=" + countries +
+                ",\ncategories=" + categories +
+                "\n}\n";
     }
 }

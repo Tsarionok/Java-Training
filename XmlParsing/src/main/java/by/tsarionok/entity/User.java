@@ -9,6 +9,7 @@ public class User extends Entity {
     private UserInfo info;
 
     public User() {
+        info = new UserInfo();
     }
 
     public User(long id, String login, String password, int role, UserInfo info) {
@@ -70,12 +71,12 @@ public class User extends Entity {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "\nUser{\n" +
                 super.toString() +
-                "login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", role=" + role +
-                ", info=" + info +
-                '}';
+                "\nlogin='" + login + '\'' +
+                ",\npassword='" + password + '\'' +
+                ",\nrole=" + role +
+                ",\ninfo=" + info +
+                "\n}\n";
     }
 }

@@ -45,7 +45,7 @@
 
   <complexType name="UserInfo">
     <sequence>
-      <element name="phone-num" type="positiveInteger"/>
+      <element name="phone-num" type="string"/>
       <element name="birth-date" type="date"/>
       <element name="sex">
         <simpleType>
@@ -64,7 +64,7 @@
         <sequence>
           <element name="name" type="string"/>
           <element name="premier-date" type="date"/>
-          <element name="image_path" type="string"/>
+          <element name="image-path" type="string"/>
           <element name="description" type="string"/>
           <element name="country" type="string" minOccurs="1" maxOccurs="unbounded"/>
           <element name="category" type="string" minOccurs="1" maxOccurs="unbounded"/>
