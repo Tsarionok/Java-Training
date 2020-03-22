@@ -53,7 +53,7 @@
   <complexType name="UserInfo">
     <sequence>
       <element name="phone-num" type="string"/>
-      <element name="birth-date" type="tns:Birth-date"/>
+      <element name="birth-date" type="tns:Date"/>
       <element name="sex">
         <simpleType>
           <restriction base="string">
@@ -65,10 +65,10 @@
     </sequence>
   </complexType>
 
-  <simpleType name="Birth-date">
+  <simpleType name="Date">
     <restriction base="date">
-      <minExclusive value="01-01-1920"/>
-      <maxExclusive value="01-01-2015"/>
+      <minExclusive value="1920-01-01"/>
+      <maxExclusive value="2015-01-01"/>
     </restriction>
   </simpleType>
 
@@ -77,7 +77,7 @@
       <extension base="tns:Entity">
         <sequence>
           <element name="name" type="string"/>
-          <element name="premier-date" type="date"/>
+          <element name="premier-date" type="tns:Date"/>
           <element name="image-path" type="string"/>
           <element name="description" type="string"/>
           <element name="country" type="string"/>

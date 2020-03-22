@@ -21,6 +21,7 @@
         <th><fmt:message key="phoneNumber"/></th>
         <th><fmt:message key="birthDate"/></th>
         <th><fmt:message key="sex"/></th>
+        <th><fmt:message key="name"/></th>
         <th><fmt:message key="premierDate"/></th>
         <th><fmt:message key="imgPath"/></th>
         <th><fmt:message key="description"/></th>
@@ -40,8 +41,14 @@
                     <td><c:out value="${ elem.info.sex }"/></td>
                     <td><c:out value="-"/></td>
                     <td><c:out value="-"/></td>
+                    <td><c:out value="-"/></td>
+                    <td><c:out value="-"/></td>
+                    <td><c:out value="-"/></td>
+                    <td><c:out value="-"/></td>
                 </c:when>
                 <c:when test="${elem.getClass().getSimpleName() == 'Serial'}">
+                    <td><c:out value="-"/></td>
+                    <td><c:out value="-"/></td>
                     <td><c:out value="-"/></td>
                     <td><c:out value="-"/></td>
                     <td><c:out value="-"/></td>
