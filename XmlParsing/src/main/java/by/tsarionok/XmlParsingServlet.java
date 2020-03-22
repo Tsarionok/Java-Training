@@ -26,8 +26,7 @@ import java.util.List;
 @MultipartConfig
 public class XmlParsingServlet extends HttpServlet {
 
-    private static final Logger LOGGER =
-            LogManager.getLogger(XmlParsingServlet.class);
+    private static final Logger LOGGER = LogManager.getLogger(XmlParsingServlet.class);
 
     @Override
     public void doGet(final HttpServletRequest request, final HttpServletResponse response) {

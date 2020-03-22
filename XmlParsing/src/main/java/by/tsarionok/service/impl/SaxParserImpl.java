@@ -24,6 +24,18 @@ public class SaxParserImpl extends Parser {
 
     public SaxParserImpl() {
         handler = new EntityHandler();
+        // create schema
+        // TODO
+        //DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        // try
+//        String constant = XMLConstants.W3C_XML_SCHEMA_NS_URI;
+//        SchemaFactory xsdFactory = SchemaFactory.newInstance(constant);
+//        Schema schema = xsdFactory.newSchema(new File(xsdFile));
+//
+//        // set schema
+//        factory.setNamespaceAware(true);
+//        factory.setValidating(false);
+//        factory.setSchema(schema);
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser parser = factory.newSAXParser();
