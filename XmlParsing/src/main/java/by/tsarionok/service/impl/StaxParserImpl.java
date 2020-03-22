@@ -108,7 +108,7 @@ public class StaxParserImpl extends Parser {
                     case "premier-date":
                         SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
                         try {
-                            serial.setPremiereDate(format.parse(getXMLText(reader)));
+                            serial.setPremierDate(format.parse(getXMLText(reader)));
                         } catch (ParseException e) {
                             LOGGER.error("Date parse error");
                         }

@@ -8,7 +8,6 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
 import java.io.IOException;
 
 public class XmlDao {
@@ -27,9 +26,8 @@ public class XmlDao {
 
     public Document readXmlFile(final String filePath) {
         Document document = null;
-        File file = new File(filePath);
         try {
-            document = documentBuilder.parse(file);
+            document = documentBuilder.parse(filePath);
         } catch (IOException | SAXException e) {
             LOGGER.error("File access exception");
         }

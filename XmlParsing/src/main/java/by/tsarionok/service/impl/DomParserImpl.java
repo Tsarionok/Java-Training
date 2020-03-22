@@ -14,8 +14,6 @@ import org.w3c.dom.NodeList;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DomParserImpl extends Parser {
     private static final Logger LOGGER = LogManager.getLogger(DomParserImpl.class);
@@ -76,21 +74,11 @@ public class DomParserImpl extends Parser {
         serial.setName(getElementContext(element, "name"));
         serial.setDescription(getElementContext(element, "description"));
         serial.setImgPath(getElementContext(element, "image-path"));
-        NodeList countryNodes = element.getElementsByTagName("country");
-        List<String> countries = new ArrayList<>();
-        for (int i = 0; i < countryNodes.getLength(); i++) {
-            countries.add(countryNodes.item(i).getTextContent());
-        }
-        serial.setCountries(countries);
-        NodeList categoryNodes = element.getElementsByTagName("category");
-        List<String> categories = new ArrayList<>();
-        for (int i = 0; i < categoryNodes.getLength(); i++) {
-            categories.add(categoryNodes.item(i).getTextContent());
-        }
-        serial.setCategories(categories);
+        serial.setCountry(getElementContext(element, "country"));
+        serial.setCategory(getElementContext(element, "category"));
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            serial.setPremiereDate(format.parse(getElementContext(element, "premier-date")));
+            serial.setPremierDate(format.parse(getElementContext(element, "premier-date")));
         } catch (ParseException e) {
             LOGGER.error("Parse date exception. " + e);
         }

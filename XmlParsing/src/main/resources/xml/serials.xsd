@@ -62,12 +62,12 @@
     <complexContent>
       <extension base="tns:Entity">
         <sequence>
-          <element name="name" type="string"/>
-          <element name="premier-date" type="date"/>
-          <element name="image-path" type="string"/>
-          <element name="description" type="string"/>
-          <element name="country" type="string" minOccurs="1" maxOccurs="unbounded"/>
-          <element name="category" type="string" minOccurs="1" maxOccurs="unbounded"/>
+            <element name="name" type="string"/>
+            <element name="premier-date" type="date"/>
+            <element name="image-path" type="string"/>
+            <element name="description" type="string"/>
+            <element name="country" type="string"/>
+            <element name="category" type="string"/>
         </sequence>
       </extension>
     </complexContent>

@@ -116,7 +116,7 @@ public class EntityHandler extends DefaultHandler {
                     case PREMIER_DATE:
                         SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
                         try {
-                            ((Serial) current).setPremiereDate(format.parse(s));
+                            ((Serial) current).setPremierDate(format.parse(s));
                         } catch (ParseException e) {
                             LOGGER.error("Date parse error");
                         }

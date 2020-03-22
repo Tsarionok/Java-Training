@@ -1,31 +1,27 @@
 package by.tsarionok.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 public class Serial extends Entity {
     private String name;
-    private Date premiereDate;
+    private Date premierDate;
     private String imgPath;
     private String description;
-    private List<String> countries;
-    private List<String> categories;
+    private String country;
+    private String category;
 
     public Serial() {
-        countries = new ArrayList<>();
-        categories = new ArrayList<>();
     }
 
-    public Serial(long id, String name, Date premiereDate, String imgPath, String description, List<String> countries, List<String> categories) {
+    public Serial(long id, String name, Date premiereDate, String imgPath, String description, String country, String category) {
         super(id);
         this.name = name;
-        this.premiereDate = premiereDate;
+        this.premierDate = premiereDate;
         this.imgPath = imgPath;
         this.description = description;
-        this.countries = countries;
-        this.categories = categories;
+        this.country = country;
+        this.category = category;
     }
 
     public String getName() {
@@ -36,12 +32,12 @@ public class Serial extends Entity {
         this.name = name;
     }
 
-    public Date getPremiereDate() {
-        return premiereDate;
+    public Date getPremierDate() {
+        return premierDate;
     }
 
-    public void setPremiereDate(Date premiereDate) {
-        this.premiereDate = premiereDate;
+    public void setPremierDate(Date premierDate) {
+        this.premierDate = premierDate;
     }
 
     public String getImgPath() {
@@ -60,29 +56,22 @@ public class Serial extends Entity {
         this.description = description;
     }
 
-    public List<String> getCountries() {
-        return countries;
-    }
-
-    public void setCountries(List<String> countries) {
-        this.countries = countries;
+    public String getCountry() {
+        return country;
     }
 
     public void setCountry(String country) {
-        countries.add(country);
+        this.country = country;
     }
 
-    public List<String> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<String> categories) {
-        this.categories = categories;
+    public String getCategory() {
+        return category;
     }
 
     public void setCategory(String category) {
-        categories.add(category);
+        this.category = category;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -91,16 +80,16 @@ public class Serial extends Entity {
         if (!super.equals(o)) return false;
         Serial serial = (Serial) o;
         return Objects.equals(name, serial.name) &&
-                Objects.equals(premiereDate, serial.premiereDate) &&
+                Objects.equals(premierDate, serial.premierDate) &&
                 Objects.equals(imgPath, serial.imgPath) &&
                 Objects.equals(description, serial.description) &&
-                Objects.equals(countries, serial.countries) &&
-                Objects.equals(categories, serial.categories);
+                Objects.equals(country, serial.country) &&
+                Objects.equals(category, serial.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), name, premiereDate, imgPath, description, countries, categories);
+        return Objects.hash(super.hashCode(), name, premierDate, imgPath, description, country, category);
     }
 
     @Override
@@ -108,11 +97,11 @@ public class Serial extends Entity {
         return "\nSerial{\n" +
                 super.toString() +
                 "\nname='" + name + '\'' +
-                ",\npremiereDate=" + premiereDate +
+                ",\npremiereDate=" + premierDate +
                 ",\nimgPath='" + imgPath + '\'' +
                 ",\ndescription='" + description + '\'' +
-                ",\ncountries=" + countries +
-                ",\ncategories=" + categories +
+                ",\ncountries=" + country +
+                ",\ncategories=" + category +
                 "\n}\n";
     }
 }
