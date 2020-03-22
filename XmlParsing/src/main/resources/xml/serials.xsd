@@ -18,16 +18,23 @@
 
   <complexType name="Entity">
     <sequence>
-      <element name="id" type="int"/>
+      <element name="id" type="positiveInteger"/>
     </sequence>
   </complexType>
+
 
   <complexType name="User">
     <complexContent>
       <extension base="tns:Entity">
         <sequence>
           <element name="login" type="tns:Login"/>
-          <element name="password" type="string"/>
+          <element name="password">
+            <simpleType>
+              <restriction base="string">
+                <pattern value="[a-zA-Z0-9]{5,20}"/>
+              </restriction>
+            </simpleType>
+          </element>
           <element name="user-info" type="tns:UserInfo"/>
         </sequence>
         <attribute name="role" use="optional" default="2">
@@ -46,7 +53,7 @@
   <complexType name="UserInfo">
     <sequence>
       <element name="phone-num" type="string"/>
-      <element name="birth-date" type="date"/>
+      <element name="birth-date" type="tns:Birth-date"/>
       <element name="sex">
         <simpleType>
           <restriction base="string">
@@ -58,15 +65,22 @@
     </sequence>
   </complexType>
 
+  <simpleType name="Birth-date">
+    <restriction base="date">
+      <minExclusive value="01-01-1920"/>
+      <maxExclusive value="01-01-2015"/>
+    </restriction>
+  </simpleType>
+
   <complexType name="Serial">
     <complexContent>
       <extension base="tns:Entity">
         <sequence>
-            <element name="name" type="string"/>
-            <element name="premier-date" type="date"/>
-            <element name="image-path" type="string"/>
-            <element name="description" type="string"/>
-            <element name="country" type="string"/>
+          <element name="name" type="string"/>
+          <element name="premier-date" type="date"/>
+          <element name="image-path" type="string"/>
+          <element name="description" type="string"/>
+          <element name="country" type="string"/>
             <element name="category" type="string"/>
         </sequence>
       </extension>
