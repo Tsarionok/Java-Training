@@ -30,7 +30,7 @@
           <element name="password" type="string"/>
           <element name="user-info" type="tns:UserInfo"/>
         </sequence>
-        <attribute name="role" use="required">
+        <attribute name="role" use="optional" default="2">
           <simpleType>
             <restriction base="int">
               <enumeration value="0"></enumeration>

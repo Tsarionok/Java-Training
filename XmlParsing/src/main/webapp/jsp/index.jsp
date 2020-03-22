@@ -5,16 +5,13 @@
     <c:set var="sessionLocale" value="en_US" scope="session"/>
 </c:if>
 <fmt:setLocale value="${sessionScope.sessionLocale}"/>
-<fmt:setBundle basename="pagecontent"/>
+<fmt:setBundle basename="property/pagecontent"/>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
     <title><fmt:message key="parserTittle"/></title>
-    <link rel="icon"
-          href="http://localhost:8080/XmlParsing/img/xml-1.png"
-          type="image/png">
     <link rel="stylesheet" href="css/format.css" type="text/css"/>
 </head>
 

@@ -5,31 +5,27 @@
     <c:set var="sessionLocale" value="en_US" scope="session"/>
 </c:if>
 <fmt:setLocale value="${sessionScope.sessionLocale}"/>
-<fmt:setBundle basename="pagecontent"/>
+<fmt:setBundle basename="property/pagecontent"/>
 
 <html>
 <head>
     <title><fmt:message key="tittle"/></title>
-    <link rel="icon"
-          href="http://localhost:8080/XmlParsing/img/icon.png"
-          type="image/png">
 </head>
 <body>
 <button onclick="history.back()"><fmt:message key="back"/></button>
 <table border="3" width="100%" cellpadding="10">
     <tr align="center" bgcolor="#deb887">
         <th><fmt:message key="id"/></th>
-        <th><fmt:message key="name"/></th>
-        <th><fmt:message key="operator"/></th>
-        <th><fmt:message key="payroll"/></th>
-        <th><fmt:message key="startDate"/></th>
-        <th><fmt:message key="endDate"/></th>
-        <th colspan="2"><fmt:message key="parameters"/></th>
-        <th><fmt:message key="tariffication"/></th>
-        <th width="10%"><fmt:message key="callPrices"/></th>
-        <th><fmt:message key="smsPrice"/></th>
-        <th><fmt:message key="freeMb"/></th>
-        <th><fmt:message key="speed"/></th>
+        <th><fmt:message key="login"/></th>
+        <th><fmt:message key="password"/></th>
+        <th><fmt:message key="phoneNumber"/></th>
+        <th><fmt:message key="birthDate"/></th>
+        <th><fmt:message key="sex"/></th>
+        <th><fmt:message key="premierDate"/></th>
+        <th><fmt:message key="imgPath"/></th>
+        <th><fmt:message key="description"/></th>
+        <th><fmt:message key="country"/></th>
+        <th><fmt:message key="category"/></th>
     </tr>
     <c:forEach var="elem" items="${res}" varStatus="status">
         <tr align="center">
