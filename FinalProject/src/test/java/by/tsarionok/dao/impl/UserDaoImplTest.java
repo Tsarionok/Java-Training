@@ -71,12 +71,6 @@ public class UserDaoImplTest {
     }
 
     @Test
-    public void testFindByEmail() {
-        User actual = userDao.findByEmail("admin_serega@mail.ru");
-        assertEquals(EXPECTED_READ_BY_EMAIL_ADMIN, actual.toString());
-    }
-
-    @Test
     public void testDeleteByLogin() {
         boolean actual = userDao.deleteByLogin("hacker");
         assertEquals(true, actual);
@@ -86,7 +80,6 @@ public class UserDaoImplTest {
     public void testCreateUserInfo() {
         User user = new User();
         user.setId(2);
-        user.setEmail("isdjcidj'); DELETE FROM `users` WHERE `users`.login = 'admin'; --");
         boolean actual = userDao.createUserInfo(user);
         assertEquals(true, actual);
     }
@@ -96,7 +89,7 @@ public class UserDaoImplTest {
         User user = new User();
         user.setId(2);
         user.setCountry("Франция");
-        user.setEmail("updateFr@gmail.com");
+        user.setGender("male");
         user.setBirthDate(new Date(830304000000l)); // 1996-04-24
         boolean actual = userDao.updateUserInfo(user);
         assertEquals(true, actual);

@@ -25,15 +25,28 @@ INSERT INTO ` categories ` (name) VALUES ('Детективы'),
 ('Боевик'),
 ('Семейные') ;
 
-INSERT INTO ` user_info ` (user_id, country_id, email, birth_date) VALUES (1, 10, 'admin_serega@mail.ru', '1999-11-11'),
-(3, 3, 'maria@gmail.com', NULL) ;
+INSERT INTO ` user_info ` (user_id, country_id, gender, birth_date) VALUES (1, 10, 'man', '1999-11-11'),
+(3, 3, 'woman', NULL) ;
 
-INSERT INTO ` serials ` (id, name, premier_date, image_path, country_id, category_id, description) VALUES (1, 'Шерлок', '2010-07-22', NULL, 2, 1, NULL),
-(2, 'Во все тяжкие', '2008-01-20', NULL, 1, 2, NULL),
-(3, 'Друзья', '1994-09-22', NULL, 1, 4, NULL) ;
+INSERT INTO ` serials ` (id, name, premiere_date, image_path, description) VALUES (1, 'Шерлок', '2010-07-22', 'sher.png', 'sher'),
+(2, 'Во все тяжкие', '2008-01-20', 'vovse.png', 'description vo vse'),
+(3, 'Друзья', '1994-09-22', 'friends.png', 'friends serial') ;
 
-INSERT INTO ` see_later ` (user_id, serial_id) VALUES (2, 1),
+INSERT INTO ` series ` (serial_id, name, serie_num, season_num, description) VALUES (1, 'first sher', 1, 1, 'decription 1'),
+(1, 'second sher', 2, 1, 'decription 2'),
+(1, 'next season sher', 1, 2, 'decription next') ;
+
+INSERT INTO ` see_later_serials ` (user_id, serial_id) VALUES (2, 1),
 (2, 2),
 (2, 3) ;
 
 INSERT INTO ` watched_serials ` (user_id, serial_id) VALUES (2, 1) ;
+
+INSERT INTO ` serials_categories ` (category_id, serial_id) VALUES (2, 1),
+(2, 2) ;
+
+INSERT INTO ` serials_countries ` (country_id, serial_id) VALUES (1, 1),
+(3, 1),
+(4, 1),
+(4, 3) ;
+

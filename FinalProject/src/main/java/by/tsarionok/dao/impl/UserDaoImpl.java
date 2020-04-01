@@ -18,17 +18,18 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             "`users`.id, " +
             "`users`.login, " +
             "`users`.role, " +
-            "`user_info`.email, " +
+            "`user_info`.gender, " +
             "`user_info`.birth_date, " +
             "`countries`.name AS `country` FROM `users` " +
             "LEFT OUTER JOIN `user_info` ON `users`.id = `user_id` " +
             "LEFT OUTER JOIN `countries` ON `user_info`.country_id = `countries`.id ORDER BY `users`.id " +
             "LIMIT ? OFFSET ?;";
 
-    private static final String SELECT_BY_ID = "SELECT `users`.id, " +
+    private static final String SELECT_BY_ID = "SELECT " +
+            "`users`.id, " +
             "`users`.login, " +
             "`users`.role, " +
-            "`user_info`.email, " +
+            "`user_info`.gender, " +
             "`user_info`.birth_date, " +
             "`countries`.name AS `country` FROM `users` " +
             "LEFT OUTER JOIN `user_info` ON `users`.id = `user_id` " +
@@ -38,22 +39,12 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     private static final String SELECT_BY_LOGIN = "SELECT `users`.id, " +
             "`users`.login, " +
             "`users`.role, " +
-            "`user_info`.email, " +
+            "`user_info`.gender, " +
             "`user_info`.birth_date, " +
             "`countries`.name AS `country` FROM `users` " +
             "LEFT OUTER JOIN `user_info` ON `users`.id = `user_id` " +
             "LEFT OUTER JOIN `countries` ON `user_info`.country_id = `countries`.id " +
             "WHERE `users`.login = ?;";
-
-    private static final String SELECT_BY_EMAIL = "SELECT `users`.id, " +
-            "`users`.login, " +
-            "`users`.role, " +
-            "`user_info`.email, " +
-            "`user_info`.birth_date, " +
-            "`countries`.name AS `country` FROM `users` " +
-            "LEFT OUTER JOIN `user_info` ON `users`.id = `user_id` " +
-            "LEFT OUTER JOIN `countries` ON `user_info`.country_id = `countries`.id " +
-            "WHERE `user_info`.email = ?;";
 
     private static final String DELETE = "DELETE FROM `users` WHERE id = ?;";
 
@@ -61,7 +52,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     private static final String CREATE = "INSERT INTO `users`(login, password, role) VALUES (?, ?, ?);";
 
-    private static final String CREATE_USER_INFO = "INSERT INTO `user_info` (user_id, email) VALUES (?, ?);";
+    private static final String CREATE_USER_INFO = "INSERT INTO `user_info` (user_id) VALUES (?);";
 
     private static final String SELECT_COUNTRY_BY_NAME = "SELECT " +
             "`countries`.id AS `country_id` " +
@@ -71,7 +62,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     private static final String UPDATE_USER_INFO = "UPDATE `user_info` SET " +
             "`user_info`.country_id = ?, " +
-            "`user_info`.email = ?, " +
+            "`user_info`.gender = ?, " +
             "`user_info`.birth_date = ? WHERE `user_info`.user_id = ?;";
 
     private static final String CHANGE_PASSWORD = "UPDATE `users` SET password = ? WHERE id = ?; ";
@@ -96,7 +87,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
                 user.setId(resultSet.getInt("id"));
                 user.setLogin(resultSet.getString("login"));
                 user.setRole(Role.findById(resultSet.getInt("role")));
-                user.setEmail(resultSet.getString("email"));
+                user.setGender(resultSet.getString("gender"));
                 user.setBirthDate(resultSet.getDate("birth_date"));
                 user.setCountry(resultSet.getString("country"));
                 users.add(user);
@@ -127,42 +118,12 @@ public class UserDaoImpl extends BaseDao implements UserDao {
                 user.setId(resultSet.getInt("id"));
                 user.setLogin(resultSet.getString("login"));
                 user.setRole(Role.findById(resultSet.getInt("role")));
-                user.setEmail(resultSet.getString("email"));
+                user.setGender(resultSet.getString("gender"));
                 user.setBirthDate(resultSet.getDate("birth_date"));
                 user.setCountry(resultSet.getString("country"));
             }
         } catch (SQLException e) {
             LOGGER.error("Select by login error", e);
-        } finally {
-            try {
-                closeResources(statement, resultSet);
-            } catch (SQLException e) {
-                LOGGER.error("Resource close error");
-            }
-        }
-        return user;
-    }
-
-    @Override
-    public User findByEmail(final String email) {
-        User user = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        try {
-            statement = connection.prepareStatement(SELECT_BY_EMAIL);
-            statement.setString(1, email);
-            resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                user = new User();
-                user.setId(resultSet.getInt("id"));
-                user.setLogin(resultSet.getString("login"));
-                user.setRole(Role.findById(resultSet.getInt("role")));
-                user.setEmail(resultSet.getString("email"));
-                user.setBirthDate(resultSet.getDate("birth_date"));
-                user.setCountry(resultSet.getString("country"));
-            }
-        } catch (SQLException e) {
-            LOGGER.error("Select by email exception", e);
         } finally {
             try {
                 closeResources(statement, resultSet);
@@ -208,8 +169,8 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             } else {
                 statement.setNull(1, Types.INTEGER);
             }
-            if (user.getEmail() != null) {
-                statement.setString(2, user.getEmail());
+            if (user.getGender() != null) {
+                statement.setString(2, user.getGender());
             } else {
                 statement.setNull(2, Types.VARCHAR);
             }
@@ -236,7 +197,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     public boolean createUserInfo(final User user) {
         try (PreparedStatement preparedStatement = connection.prepareStatement(CREATE_USER_INFO)) {
             preparedStatement.setInt(1, user.getId());
-            preparedStatement.setString(2, user.getEmail());
+            preparedStatement.setString(2, user.getGender());
             return preparedStatement.executeUpdate() != 0;
         } catch (SQLException e) {
             LOGGER.error("Insert user info exception", e);
@@ -316,7 +277,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
                 user.setId(resultSet.getInt("id"));
                 user.setLogin(resultSet.getString("login"));
                 user.setRole(Role.findById(resultSet.getInt("role")));
-                user.setEmail(resultSet.getString("email"));
+                user.setGender(resultSet.getString("gender"));
                 user.setBirthDate(resultSet.getDate("birth_date"));
                 user.setCountry(resultSet.getString("country"));
             }

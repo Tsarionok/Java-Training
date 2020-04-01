@@ -18,24 +18,18 @@ public class SerialDaoImpl extends BaseDao implements SerialDao {
     private static final String SELECT_ALL = "SELECT " +
             "`serials`.id, " +
             "`serials`.name, " +
-            "`serials`.premier_date, " +
+            "`serials`.premiere_date, " +
             "`serials`.image_path, " +
-            "`serials`.description, " +
-            "`countries`.name AS `country`, " +
-            "`categories`.name AS `category` FROM `serials` " +
-            "LEFT OUTER JOIN `countries` ON `countries`.id = `country_id` " +
-            "LEFT OUTER JOIN `categories` ON `categories`.id = `category_id` " +
+            "`serials`.description " +
+            "FROM `serials` " +
             "ORDER BY `serials`.id LIMIT ? OFFSET ?;";
 
     private static final String SELECT_BY_NAME = "SELECT `serials`.id, \n" +
             "\t\t`serials`.name, \n" +
-            "\t\t`serials`.premier_date,\n" +
-            "        `serials`.image_path,\n" +
-            "        `serials`.description,\n" +
-            "        `countries`.name\tAS `country`,\n" +
-            "        `categories`.name \tAS `category` FROM `serials` \n" +
-            "LEFT OUTER JOIN `countries` ON `countries`.id = `country_id`\n" +
-            "LEFT OUTER JOIN `categories` ON `categories`.id = `category_id`\n" +
+            "\t\t`serials`.premiere_date, " +
+            "`serials`.image_path, " +
+            "`serials`.description " +
+            "FROM `serials` \n" +
             "WHERE `serials`.name = ?;";
 
     @Override
@@ -52,11 +46,9 @@ public class SerialDaoImpl extends BaseDao implements SerialDao {
                 Serial serial = new Serial();
                 serial.setId(resultSet.getInt("id"));
                 serial.setName(resultSet.getString("name"));
-                serial.setPremierDate(resultSet.getDate("premier_date"));
+                serial.setPremiereDate(resultSet.getDate("premier_date"));
                 serial.setImageName(resultSet.getString("image_path"));
                 serial.setDescription(resultSet.getString("description"));
-                serial.setCountry(resultSet.getString("country"));
-                serial.setCategory(resultSet.getString("category"));
                 serials.add(serial);
             }
         } catch (SQLException e) {
@@ -84,11 +76,9 @@ public class SerialDaoImpl extends BaseDao implements SerialDao {
                 Serial serial = new Serial();
                 serial.setId(resultSet.getInt("id"));
                 serial.setName(resultSet.getString("name"));
-                serial.setPremierDate(resultSet.getDate("premier_date"));
+                serial.setPremiereDate(resultSet.getDate("premier_date"));
                 serial.setImageName(resultSet.getString("image_path"));
                 serial.setDescription(resultSet.getString("description"));
-                serial.setCountry(resultSet.getString("country"));
-                serial.setCategory(resultSet.getString("category"));
                 serials.add(serial);
             }
         } catch (SQLException e) {

@@ -1,15 +1,16 @@
 package by.tsarionok.entity;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class Serial extends Entity {
     private String name;
-    private Date premierDate;
+    private Date premiereDate;
     private String imageName;
     private String description;
-    private String country;
-    private String category;
+    private List<String> countries;
+    private List<String> categories;
 
     public String getName() {
         return name;
@@ -19,12 +20,12 @@ public class Serial extends Entity {
         this.name = name;
     }
 
-    public Date getPremierDate() {
-        return premierDate;
+    public Date getPremiereDate() {
+        return premiereDate;
     }
 
-    public void setPremierDate(Date premierDate) {
-        this.premierDate = premierDate;
+    public void setPremiereDate(Date premiereDate) {
+        this.premiereDate = premiereDate;
     }
 
     public String getImageName() {
@@ -43,56 +44,50 @@ public class Serial extends Entity {
         this.description = description;
     }
 
-    public String getCountry() {
-        return country;
+    public List<String> getCountries() {
+        return countries;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setCountries(List<String> countries) {
+        this.countries = countries;
     }
 
-    public String getCategory() {
-        return category;
+    public List<String> getCategories() {
+        return categories;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        if (!super.equals(o)) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Serial serial = (Serial) o;
         return Objects.equals(name, serial.name) &&
-                Objects.equals(premierDate, serial.premierDate) &&
+                Objects.equals(premiereDate, serial.premiereDate) &&
                 Objects.equals(imageName, serial.imageName) &&
                 Objects.equals(description, serial.description) &&
-                Objects.equals(country, serial.country) &&
-                Objects.equals(category, serial.category);
+                Objects.equals(countries, serial.countries) &&
+                Objects.equals(categories, serial.categories);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), name, premierDate, imageName, description, country, category);
+        return Objects.hash(super.hashCode(), name, premiereDate, imageName, description, countries, categories);
     }
 
     @Override
     public String toString() {
         return "Serial{" +
                 "name='" + name + '\'' +
-                ", premierDate=" + premierDate +
+                ", premierDate=" + premiereDate +
                 ", imageName='" + imageName + '\'' +
                 ", description='" + description + '\'' +
-                ", country='" + country + '\'' +
-                ", category='" + category + '\'' +
+                ", country='" + countries + '\'' +
+                ", category='" + categories + '\'' +
                 '}';
     }
 }

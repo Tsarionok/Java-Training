@@ -8,7 +8,7 @@ public class User extends Entity {
     private String password;
     private Role role;
     private String country;
-    private String email;
+    private String gender;
     private Date birthDate;
 
     public String getLogin() {
@@ -43,12 +43,12 @@ public class User extends Entity {
         this.country = country;
     }
 
-    public String getEmail() {
-        return email;
+    public String getGender() {
+        return gender;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public Date getBirthDate() {
@@ -61,30 +61,23 @@ public class User extends Entity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        if (!super.equals(o)) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         User user = (User) o;
         return Objects.equals(login, user.login) &&
                 Objects.equals(password, user.password) &&
                 role == user.role &&
                 Objects.equals(country, user.country) &&
-                Objects.equals(email, user.email) &&
+                Objects.equals(gender, user.gender) &&
                 Objects.equals(birthDate, user.birthDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), login, password, role, country, email, birthDate);
+        return Objects.hash(super.hashCode(), login, password, role, country, gender, birthDate);
     }
 
-    // этот toString пока использую для тестов, возможно в будущем - деприкейтед =)
     @Override
     public String toString() {
         return "" +
@@ -92,7 +85,7 @@ public class User extends Entity {
                 password + '\n' +
                 role + '\n' +
                 country + '\n' +
-                email + '\n' +
+                gender + '\n' +
                 birthDate + '\n';
     }
 }
