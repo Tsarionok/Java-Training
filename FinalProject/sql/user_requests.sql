@@ -9,7 +9,7 @@ SELECT
                                    LEFT OUTER JOIN `user_info` ON `users`.id = `user_id`
                                    LEFT OUTER JOIN `countries` ON `user_info`.country_id = `countries`.id;
 
-        # Прочитать пользователя по логину
+# Прочитать пользователя по логину
 SELECT
 `users`.id,
 `users`.login,
