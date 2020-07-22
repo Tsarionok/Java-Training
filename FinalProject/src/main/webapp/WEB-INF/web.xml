@@ -8,26 +8,17 @@
     <display-name>Task_Series_Catalog</display-name>
 
     <welcome-file-list>
-        <welcome-file>/jsp/home.jsp</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    <servlet>
-        <servlet-name>MainController</servlet-name>
-        <servlet-class>by.tsarionok.controller.MainController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>MainController</servlet-name>
-        <url-pattern>/signin</url-pattern>
-        <url-pattern>/home</url-pattern>
-        <url-pattern>/signup</url-pattern>
-        <url-pattern>/films</url-pattern>
-        <url-pattern>/admin/users</url-pattern>
-        <url-pattern>/admin/user_add</url-pattern>
-        <url-pattern>/admin/film_add</url-pattern>
-        <url-pattern>/user/see_later</url-pattern>
-        <url-pattern>/user/profile</url-pattern>
-        <url-pattern>/film</url-pattern>
-        <url-pattern>/about</url-pattern>
-        <url-pattern>/user/watched</url-pattern>
-    </servlet-mapping>
+    <!--    <error-page>-->
+    <!--        <error-code>404</error-code>-->
+    <!--        <location>/jsp/error/error.jsp</location>-->
+    <!--    </error-page>-->
+
+    <!--    <error-page>-->
+    <!--        <exception-type>java.lang.RuntimeException</exception-type>-->
+    <!--        <location>/jsp/error/error.jsp</location>-->
+    <!--    </error-page>-->
+
 </web-app>

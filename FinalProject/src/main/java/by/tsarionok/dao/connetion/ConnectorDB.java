@@ -17,8 +17,10 @@ public class ConnectorDB {
     public static Connection getConnection() {
         Connection connection = null;
         try {
+            Class.forName("com.mysql.jdbc.Driver");
+
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             LOGGER.fatal("Create connection error");
         }
         return connection;
