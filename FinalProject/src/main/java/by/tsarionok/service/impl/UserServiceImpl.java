@@ -17,9 +17,10 @@ public class UserServiceImpl extends ServiceImpl implements UserService {
 
     @Override
     public User findByLoginAndPassword(final String login, final String pass) throws CustomException {
-        if (!login.isEmpty() && !pass.isEmpty()) {
-            UserDao userDao = new UserDaoImpl();
-            String userPass = userDao.findPasswordByLogin(login);
+        UserDao userDao = new UserDaoImpl();
+        if (!login.isEmpty() && !pass.isEmpty() && userDao.findByLogin(login) != null) {
+            String userPass;
+            userPass = userDao.findPasswordByLogin(login);
             if (!userPass.isEmpty()) {
                 return userPass.equals(pass) ? userDao.findByLogin(login) : null;
             } else {
